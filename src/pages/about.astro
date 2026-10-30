@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CTA from '../components/CTA.astro';
+import { site } from '../config';
+
+const values = [
+  { title: 'Plain English', text: 'You should never leave a conversation with your accountant more confused than when you arrived. I explain the why, not just the what.' },
+  { title: 'Honest scope', text: 'If you do not need a service, I will say so. Sometimes the right answer is "do this yourself in FTG Books", and I will show you how.' },
+  { title: 'Proactive, not reactive', text: 'Deadlines are tracked months out. You hear from me before SARS does, not after.' },
+  { title: 'Technology where it helps', text: 'I build software because I have felt the gaps in the tools we are given. Automation handles the repetitive work so our time together goes to decisions.' },
+];
+---
+<Base title="About" description={`Meet ${site.owner}, the Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA) behind Filling the GAAP. Ten years across audit, industry and financial management.`}>
+  <PageHero eyebrow="About" title="An accountant who has sat on both sides of the desk." lede="Ten years across the auditing profession and as a financial manager in industry, now in a one-person practice built around straight answers and good software." />
+
+  <section class="section-tight">
+    <div class="wrap about-grid">
+      <div class="portrait" aria-hidden="true">
+        <div class="portrait-frame">
+          <span class="initials">KJ</span>
+        </div>
+        <ul class="cred-list">
+          {site.credentials.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+      <div class="prose">
+        <h2>Hello, I'm {site.owner}.</h2>
+        <p>I started my career in audit, where you learn quickly that the numbers in a set of financial statements are only as good as the bookkeeping underneath them, and that most problems are caused by things nobody explained to the business owner. I then moved into industry as a financial manager, running finance functions across several sectors, where I learned the other half of the job: what owners and directors actually need from their numbers to make decisions.</p>
+        <p>Filling the GAAP brings those two halves together. The name is a play on GAAP, generally accepted accounting practice, and on the gap I kept seeing: between what small businesses and individuals are expected to comply with and the support they can actually afford. I fill it with two things. Personal, professional service on a fixed fee, and software I built myself so that the parts of accounting that should be cheap or free actually are.</p>
+        <h3>Qualifications and registrations</h3>
+        <ul>
+          <li><strong>Professional Accountant (SA)</strong>, a SAIPA designation. I may compile financial statements and act as accounting officer.</li>
+          <li><strong>Professional Tax Practitioner (SA)</strong>, registered with SARS as a tax practitioner. I may prepare and submit returns and represent you in disputes.</li>
+          <li><strong>Independent Reviewer (SA)</strong>, qualified to perform independent reviews of annual financial statements under the Companies Act.</li>
+        </ul>
+        <h3>The practice</h3>
+        <p>I run the practice alone, deliberately. You deal with me, every time, and I know your file. The work is fully remote, which keeps overheads low and lets me serve clients anywhere in South Africa and South Africans abroad. I am available {site.hours.toLowerCase()}, and on WhatsApp for anything quick.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <span class="eyebrow">How I work</span>
+      <h2>Four things you can hold me to.</h2>
+      <div class="grid grid-2 mt-2">
+        {values.map((v) => <div class="card"><h3>{v.title}</h3><p>{v.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <CTA title="Let's see if we're a fit." text="A free 30-minute call. No pitch, just a conversation about where you are and what would help." />
+</Base>
+<style>
+  .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: start; padding-bottom: 2rem; }
+  .portrait-frame { aspect-ratio: 4/5; border-radius: var(--radius); background: linear-gradient(160deg, var(--pine), var(--ink)); display: grid; place-items: center; box-shadow: var(--shadow); }
+  .initials { font-family: var(--font-display); font-size: 4rem; color: var(--gold-soft); letter-spacing: 0.05em; }
+  .cred-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .cred-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--heading); font-size: 0.95rem; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } .portrait { max-width: 260px; } }
+</style>

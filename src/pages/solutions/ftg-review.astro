@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+
+const stages = [
+  { title: 'Acceptance and independence', text: 'Client acceptance checklists, independence declarations and engagement letters generated from templates aligned to ISRE 2400 and the IRBA and SAIPA codes.' },
+  { title: 'Planning', text: 'Understanding the entity, materiality calculations, risk indicators and a tailored procedures programme in minutes.' },
+  { title: 'Analytical procedures', text: 'Import the trial balance, run ratio and trend analysis against prior years and expectations, and document explanations for every variance that matters.' },
+  { title: 'Enquiries', text: 'Structured enquiry scripts for management, with responses captured and linked directly to the relevant assertion.' },
+  { title: 'Documentation', text: 'Every procedure, conclusion and reviewer sign-off is time-stamped and cross-referenced, so the file is always inspection-ready.' },
+  { title: 'Reporting', text: 'Generate the independent review report, management representation letter and completion memorandum, then archive the engagement file.' },
+];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'FTG Review',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  publisher: { '@type': 'Organization', name: 'Filling the GAAP' },
+};
+---
+<Base title="FTG Review for independent review engagements" description="FTG Review is engagement software for accounting practices performing ISRE 2400 independent reviews of annual financial statements in South Africa: acceptance, planning, analytical procedures, enquiries, documentation and reporting." jsonLd={ld}>
+  <PageHero brand eyebrow="FTG Review" title="Independent reviews, done efficiently and documented properly." lede="Built by an Independent Reviewer (SA) for practices that perform ISRE 2400 engagements. From acceptance to report, with a file that is always ready for inspection.">
+    <div class="btn-row" style="margin-top:1.4rem">
+      <a class="btn btn-primary" href="/contact?topic=ftg-review">Request a demo</a>
+      <a class="btn btn-outline" href="/resources/audit-independent-review-or-neither">What is an independent review?</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items:center">
+      <div>
+        <span class="eyebrow">The problem</span>
+        <h2>Audit software is overkill. Spreadsheets are a risk.</h2>
+        <p class="lede">Independent reviews are limited-assurance engagements. They should take days, not weeks. Yet most practices either force them through audit methodology software built for a different standard, or run them in Word and Excel and hope the file holds up when the professional body calls.</p>
+      </div>
+      <div class="card">
+        <h3>FTG Review gives you</h3>
+        <ul class="check-list">
+          <li>A methodology mapped procedure by procedure to ISRE 2400</li>
+          <li>Trial balance import from FTG Books, Xero, Sage, QuickBooks or CSV</li>
+          <li>Automatic materiality and analytical review</li>
+          <li>Templates for every letter and report in the engagement</li>
+          <li>Reviewer and preparer roles with sign-off trails</li>
+          <li>A locked, archived file at completion</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <span class="eyebrow">Workflow</span>
+      <h2>Six stages. One file.</h2>
+      <ol class="stages mt-2">
+        {stages.map((s, i) => (
+          <li class="card">
+            <span class="stage-n">{String(i + 1).padStart(2, '0')}</span>
+            <h3 style="font-size:1.15rem">{s.title}</h3>
+            <p class="small">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow center">
+      <span class="eyebrow">Pricing</span>
+      <h2>Per-practice subscription.</h2>
+      <p class="lede mx-auto">Plans are priced by the number of engagements per year, with unlimited users per practice. Detailed pricing will be published here shortly. Request a demo and I will share the current plans.</p>
+      <a class="btn btn-dark" href="/contact?topic=ftg-review">Request a demo and pricing</a>
+    </div>
+  </section>
+  <CTA title="Run your next review in FTG Review." text="Book a walkthrough using one of your own completed engagements and see how the file compares." />
+</Base>
+<style>
+  .stages { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.25rem; }
+  .stages li { margin: 0; }
+  .stage-n { font-family: var(--font-display); color: var(--gold-strong); font-size: 1.4rem; display: block; margin-bottom: 0.4rem; }
+</style>

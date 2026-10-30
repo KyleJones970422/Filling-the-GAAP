@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { individualServices, businessServices } from '../../data/services';
+---
+<Base title="Services" description="Personal tax, business accounting, payroll, VAT, CIPC, company tax and independent reviews for individuals, companies and trusts across South Africa.">
+  <PageHero eyebrow="Services" title="Everything from a single tax return to a full finance function." lede="Choose the path that fits you. Both come with fixed fees, a free first consultation and FTG Books included." />
+  <section class="section-tight">
+    <div class="wrap grid grid-2">
+      <a class="card-link" href="/services/individuals">
+        <div class="card path">
+          <span class="eyebrow">For individuals</span>
+          <h2>Personal tax</h2>
+          <p>Salaried employees, freelancers, landlords, investors, expats and estates. Returns done right, deductions claimed, SARS handled.</p>
+          <ul class="check-list small">
+            {individualServices.slice(0, 6).map((s) => <li>{s.title}</li>)}
+            <li>and {individualServices.length - 6} more</li>
+          </ul>
+          <span class="btn btn-dark btn-sm" style="margin-top:1.2rem">See individual services</span>
+        </div>
+      </a>
+      <a class="card-link" href="/services/businesses">
+        <div class="card path">
+          <span class="eyebrow">For businesses, companies and trusts</span>
+          <h2>Business accounting &amp; tax</h2>
+          <p>Start-ups, owner-managed companies, trusts, NPOs and body corporates. Monthly retainers that keep you compliant and informed.</p>
+          <ul class="check-list small">
+            {businessServices.slice(0, 6).map((s) => <li>{s.title}</li>)}
+            <li>and {businessServices.length - 6} more</li>
+          </ul>
+          <span class="btn btn-dark btn-sm" style="margin-top:1.2rem">See business services</span>
+        </div>
+      </a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap narrow center">
+      <span class="eyebrow">Pricing</span>
+      <h2>Fixed, transparent, market-related.</h2>
+      <p class="lede mx-auto">Indicative prices for every service are published, and the exact fee is confirmed in writing before any work starts.</p>
+      <a class="btn btn-primary" href="/pricing">View pricing</a>
+    </div>
+  </section>
+  <CTA />
+</Base>
+<style>
+  .path { display: flex; flex-direction: column; }
+  .path h2 { margin-top: 0; }
+  .path .btn { align-self: flex-start; }
+</style>

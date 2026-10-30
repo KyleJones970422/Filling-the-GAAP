@@ -1,0 +1,32 @@
+---
+/**
+ * Brand mark + wordmark. The mark is two ledger columns with the gap between them
+ * filled in gold: "filling the gap" in GAAP.
+ */
+interface Props { variant?: 'default' | 'light'; size?: number; markOnly?: boolean }
+const { variant = 'default', size = 40, markOnly = false } = Astro.props;
+const text = variant === 'light' ? '#ffffff' : 'var(--heading)';
+const sub = variant === 'light' ? 'rgba(246,243,236,0.75)' : 'var(--muted)';
+---
+<span class="logo" style={`--s:${size}px`}>
+  <svg class="logo-mark" viewBox="0 0 64 64" width={size} height={size} aria-hidden="true">
+    <rect width="64" height="64" rx="16" fill="#0b2a26"/>
+    <rect x="13" y="13" width="12" height="38" rx="2.5" fill="#f6f3ec"/>
+    <rect x="39" y="13" width="12" height="38" rx="2.5" fill="#f6f3ec"/>
+    <rect x="25" y="31" width="14" height="20" fill="#c2993f"/>
+    <rect x="25" y="27" width="14" height="4" rx="1" fill="#efe3bf" opacity="0.9"/>
+  </svg>
+  {!markOnly && (
+    <span class="logo-text">
+      <span class="logo-top" style={`color:${sub}`}>Filling the</span>
+      <span class="logo-main" style={`color:${text}`}>GAAP</span>
+    </span>
+  )}
+</span>
+<style>
+  .logo { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; line-height: 1; }
+  .logo-mark { flex-shrink: 0; border-radius: 25%; }
+  .logo-text { display: flex; flex-direction: column; font-family: var(--font-display); }
+  .logo-top { font-size: calc(var(--s) * 0.3); font-style: italic; font-weight: 400; letter-spacing: 0.01em; }
+  .logo-main { font-size: calc(var(--s) * 0.56); font-weight: 600; letter-spacing: 0.08em; margin-top: 0.1em; }
+</style>

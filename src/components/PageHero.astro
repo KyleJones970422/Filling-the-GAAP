@@ -1,0 +1,16 @@
+---
+interface Props { eyebrow?: string; title: string; lede?: string; brand?: boolean }
+const { eyebrow, title, lede, brand = false } = Astro.props;
+---
+<section class:list={['section-tight page-hero', { 'section-brand': brand }]}>
+  <div class="wrap">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <slot />
+  </div>
+</section>
+<style>
+  .page-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); padding-bottom: clamp(2rem, 4vw, 3rem); }
+  .page-hero h1 { max-width: 22ch; }
+</style>

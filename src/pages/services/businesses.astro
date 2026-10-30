@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import Faq from '../../components/Faq.astro';
+import { businessServices } from '../../data/services';
+import { businessFaq } from '../../data/faq';
+import { businessPlans } from '../../data/pricing';
+---
+<Base title="Accounting and tax for businesses, companies and trusts" description="Monthly bookkeeping, management accounts, annual financial statements, independent reviews, VAT, payroll, CIPC and company tax for South African companies, trusts, NPOs and body corporates.">
+  <PageHero eyebrow="For businesses, companies and trusts" title="A finance function without the headcount." lede="Fixed monthly retainers that cover the books, the filings and the conversations that matter. Start-ups, owner-managed companies, trusts, non-profits and body corporates.">
+    <div class="btn-row" style="margin-top:1.2rem">
+      <a class="btn btn-primary" href="/contact">Book a free consultation</a>
+      <a class="btn btn-outline" href="/pricing#business">Business pricing</a>
+    </div>
+  </PageHero>
+
+  <section class="section-tight">
+    <div class="wrap grid grid-3">
+      {businessServices.map((s) => (
+        <div class="card" id={s.title.startsWith('Independent reviews') ? 'reviews' : undefined}>
+          <h3>{s.title}</h3>
+          <p>{s.blurb}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-brand">
+    <div class="wrap review-grid">
+      <div>
+        <span class="eyebrow">Independent reviews</span>
+        <h2>Do you actually need an audit?</h2>
+        <p>Many small companies are audited every year without being required to be. The Companies Act decides what you need based on your public interest score and whether you are owner-managed. As an Independent Reviewer (SA) I perform ISRE 2400 independent reviews, which are faster and significantly cheaper than an audit, for companies that qualify.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/tools/pi-score-calculator">Check your PI score</a>
+          <a class="btn btn-outline" href="/resources/audit-independent-review-or-neither">Read the full guide</a>
+        </div>
+      </div>
+      <div class="review-table">
+        <table>
+          <thead><tr><th>PI score</th><th>Requirement</th></tr></thead>
+          <tbody>
+            <tr><td>350 or more</td><td>Audit</td></tr>
+            <tr><td>100 to 349</td><td>Independent review (audit if compiled internally)</td></tr>
+            <tr><td>Below 100, not owner-managed</td><td>Independent review</td></tr>
+            <tr><td>Below 100, owner-managed</td><td>Neither. Compile your own AFS in FTG Books</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="pricing">
+    <div class="wrap">
+      <span class="eyebrow">Monthly retainers</span>
+      <h2>Pick the level of support you need.</h2>
+      <div class="grid grid-3 mt-2">
+        {businessPlans.map((p) => (
+          <div class:list={['card plan', { highlight: p.highlight }]}>
+            <h3>{p.name}</h3>
+            <div class="price">from {p.price} <small>{p.period}</small></div>
+            <p class="muted">{p.tagline}</p>
+            <ul class="check-list small">{p.features.map((f) => <li>{f}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p class="small muted" style="margin-top:1.2rem">Indicative prices. Once-off services such as company registration and independent reviews are on the <a href="/pricing">full pricing page</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <span class="eyebrow">Questions</span>
+      <h2>Business FAQ</h2>
+      <Faq items={businessFaq} withSchema />
+    </div>
+  </section>
+  <CTA />
+</Base>
+<style>
+  .review-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  .review-table { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); padding: 1rem; }
+  .review-table th { color: var(--gold-light); }
+  .review-table td { color: rgba(246,243,236,0.9); border-color: rgba(255,255,255,0.1); }
+  .plan.highlight { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), var(--shadow); }
+  .price { font-family: var(--font-display); font-size: 1.8rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
+  .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); }
+  @media (max-width: 860px) { .review-grid { grid-template-columns: 1fr; } }
+</style>

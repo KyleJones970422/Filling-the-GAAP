@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { monthly, annual } from '../../data/calendar';
+const cat = (c: string) => ({ SARS: 'badge-warn', CIPC: 'badge-ok', Payroll: 'pill-outline', VAT: 'badge-danger' }[c] ?? '');
+---
+<Base title="South African tax calendar" description="Every recurring SARS, CIPC, VAT and payroll deadline for South African individuals and businesses: EMP201, VAT201, provisional tax, filing season, ITR14, CIPC annual returns and more.">
+  <PageHero eyebrow="Tax calendar" title="Every deadline, in one place." lede="The recurring rules that govern when things are due. SARS announces exact filing season dates each year, so treat the 'around' dates as a guide and confirm the current year on the SARS website or with me." />
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="legend">
+        <span class="pill badge-warn">SARS</span><span class="pill badge-danger">VAT</span><span class="pill pill-outline">Payroll</span><span class="pill badge-ok">CIPC</span>
+      </div>
+      <h2>Monthly</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>When</th><th>What</th><th>Who</th></tr></thead>
+          <tbody>
+            {monthly.map((d) => <tr><td style="white-space:nowrap"><strong>{d.when}</strong></td><td><span class={`pill ${cat(d.category)}`}>{d.category}</span><div>{d.what}</div>{d.detail && <div class="small muted">{d.detail}</div>}</td><td class="small">{d.who}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <h2 class="mt-2" style="margin-top:3rem">Annual</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>When</th><th>What</th><th>Who</th></tr></thead>
+          <tbody>
+            {annual.map((d) => <tr><td style="white-space:nowrap"><strong>{d.when}</strong></td><td><span class={`pill ${cat(d.category)}`}>{d.category}</span><div>{d.what}</div>{d.detail && <div class="small muted">{d.detail}</div>}</td><td class="small">{d.who}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <div class="notice mt-2">
+        <p><strong>Never miss one again.</strong> Retainer clients get every deadline tracked and filed for them, with reminders before anything is due. <a href="/services/businesses">See the business retainers</a>.</p>
+      </div>
+    </div>
+  </section>
+  <CTA />
+</Base>
+<style>
+  .legend { margin-bottom: 1.5rem; }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.5rem 1rem; }
+  td .pill { margin-bottom: 0.3rem; font-size: 0.7rem; }
+  @media (max-width: 640px) { td[style] { white-space: normal !important; } }
+</style>

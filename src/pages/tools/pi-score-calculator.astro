@@ -1,0 +1,211 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+---
+<Base title="Public interest (PI) score calculator" description="Calculate your company's public interest score under the Companies Act and find out instantly whether you need an audit, an independent review, or can compile your own annual financial statements.">
+  <PageHero eyebrow="PI score calculator" title="Audit, independent review, or neither?" lede="Your public interest score, calculated under Regulation 26(2) of the Companies Act, decides what level of assurance your annual financial statements need. Answer eight quick questions." />
+  <section class="section-tight">
+    <div class="wrap calc-grid">
+      <form class="card" id="pi-form" novalidate>
+        <span class="eyebrow">Step 1 · Score inputs</span>
+        <div class="field">
+          <label for="type">Type of entity</label>
+          <select id="type" name="type">
+            <option value="private">Private company (Pty) Ltd</option>
+            <option value="cc">Close corporation</option>
+            <option value="personal">Personal liability company (Inc)</option>
+            <option value="npc">Non-profit company (NPC)</option>
+            <option value="public">Public or state-owned company</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="employees">Average number of employees</label>
+            <input type="number" id="employees" min="0" step="1" value="0" inputmode="numeric" />
+            <span class="hint">Average over the financial year, including directors who are employed.</span>
+          </div>
+          <div class="field">
+            <label for="holders" id="holders-label">Individuals with a beneficial interest in shares</label>
+            <input type="number" id="holders" min="0" step="1" value="1" inputmode="numeric" />
+            <span class="hint" id="holders-hint">Count natural persons, looking through trusts and holding companies.</span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="turnover">Turnover for the year (R)</label>
+            <input type="number" id="turnover" min="0" step="10000" value="0" inputmode="numeric" />
+            <span class="hint">1 point per R1 million or part thereof.</span>
+          </div>
+          <div class="field">
+            <label for="liabilities">Third-party liabilities at year end (R)</label>
+            <input type="number" id="liabilities" min="0" step="10000" value="0" inputmode="numeric" />
+            <span class="hint">Loans, creditors, SARS, overdrafts. Exclude shareholder and director loans. 1 point per R1 million or part thereof.</span>
+          </div>
+        </div>
+
+        <span class="eyebrow" style="margin-top:1rem">Step 2 · Circumstances</span>
+        <div class="field">
+          <label>Are all shareholders also directors of the company?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="owner" value="yes" checked /> Yes, owner-managed</label>
+            <label><input type="radio" name="owner" value="no" /> No</label>
+          </div>
+          <span class="hint">Section 30(2A). If every holder of a beneficial interest is also a director, the company is exempt from audit and independent review unless another trigger applies.</span>
+        </div>
+        <div class="field">
+          <label>Who compiles the annual financial statements?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="compiled" value="internal" checked /> The company itself</label>
+            <label><input type="radio" name="compiled" value="independent" /> An independent accounting professional</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Does the company hold assets in a fiduciary capacity for unrelated persons worth more than R5 million at any point in the year?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="fiduciary" value="no" checked /> No</label>
+            <label><input type="radio" name="fiduciary" value="yes" /> Yes</label>
+          </div>
+          <span class="hint">Trust accounts of attorneys, estate agents, managing agents and similar.</span>
+        </div>
+        <div class="field">
+          <label>Does the Memorandum of Incorporation, or a shareholder or board resolution, require an audit?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="moi" value="no" checked /> No</label>
+            <label><input type="radio" name="moi" value="yes" /> Yes</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+
+      <div class="result" id="result" aria-live="polite">
+        <span class="eyebrow">Your public interest score</span>
+        <div class="big" id="r-score">0</div>
+        <dl>
+          <dt>Employees</dt><dd id="r-emp">0</dd>
+          <dt>Turnover</dt><dd id="r-turn">0</dd>
+          <dt>Third-party liabilities</dt><dd id="r-liab">0</dd>
+          <dt>Beneficial holders</dt><dd id="r-hold">0</dd>
+        </dl>
+        <hr />
+        <span class="pill" id="r-badge">Result</span>
+        <h3 id="r-title" style="margin-top:0.6rem">Enter your details</h3>
+        <div id="r-body" class="small"></div>
+        <div class="btn-row" id="r-actions" style="margin-top:1.2rem"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap narrow prose">
+      <h2>How the rules work</h2>
+      <p>The Companies Act 71 of 2008 and its Regulations use a public interest score to scale the assurance requirement to the size and footprint of a company.</p>
+      <table>
+        <thead><tr><th>PI score</th><th>AFS compiled by</th><th>Requirement</th></tr></thead>
+        <tbody>
+          <tr><td>350 or more</td><td>Anyone</td><td>Audit</td></tr>
+          <tr><td>100 to 349</td><td>Company itself</td><td>Audit</td></tr>
+          <tr><td>100 to 349</td><td>Independent accounting professional</td><td>Independent review by a registered auditor or a member of an accredited professional body</td></tr>
+          <tr><td>Below 100</td><td>Either</td><td>Independent review (may be performed by anyone qualified to be an accounting officer of a close corporation)</td></tr>
+        </tbody>
+      </table>
+      <p>Two overrides apply. First, an audit is always required for public and state-owned companies, companies holding more than R5 million in fiduciary assets for unrelated persons, and companies whose MOI or shareholders require one. Second, an <strong>owner-managed</strong> company, where every shareholder is also a director, is exempt from both audit and independent review under section 30(2A) unless one of those audit triggers applies.</p>
+      <p>Read the full guide: <a href="/resources/audit-independent-review-or-neither">Audit, independent review, or neither?</a></p>
+      <p class="small muted">This tool reflects Regulations 26 to 29 of the Companies Regulations, 2011 as generally applied. It is a guide, not a legal opinion. Confirm your position for your specific circumstances.</p>
+    </div>
+  </section>
+  <CTA title="Need an independent review?" text="As an Independent Reviewer (SA) I perform ISRE 2400 engagements for companies and trusts. If you only need your statements compiled, FTG Books can do that for you." />
+</Base>
+
+<script>
+  const form = document.getElementById('pi-form') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  const val = (id: string) => Number((document.getElementById(id) as HTMLInputElement).value) || 0;
+  const radio = (name: string) => (form.querySelector(`input[name="${name}"]:checked`) as HTMLInputElement).value;
+  const perMillion = (n: number) => (n <= 0 ? 0 : Math.ceil(n / 1_000_000));
+
+  function setBadge(cls: string, text: string) {
+    const b = $('r-badge');
+    b.className = 'pill ' + cls;
+    b.textContent = text;
+  }
+
+  function calc() {
+    const type = (document.getElementById('type') as HTMLSelectElement).value;
+    const isNpc = type === 'npc';
+    $('holders-label').textContent = isNpc ? 'Number of members' : 'Individuals with a beneficial interest in shares';
+    $('holders-hint').textContent = isNpc ? 'Members of the non-profit company. 1 point each.' : 'Count natural persons, looking through trusts and holding companies.';
+
+    const emp = val('employees');
+    const turn = perMillion(val('turnover'));
+    const liab = perMillion(val('liabilities'));
+    const hold = val('holders');
+    const score = emp + turn + liab + hold;
+    $('r-score').textContent = String(score);
+    $('r-emp').textContent = String(emp);
+    $('r-turn').textContent = String(turn);
+    $('r-liab').textContent = String(liab);
+    $('r-hold').textContent = String(hold);
+
+    const owner = radio('owner') === 'yes';
+    const independent = radio('compiled') === 'independent';
+    const fiduciary = radio('fiduciary') === 'yes';
+    const moi = radio('moi') === 'yes';
+    const isPublic = type === 'public';
+
+    let title = '', body = '', badge = ['badge-warn', 'Result'], actions = '';
+    const bookReview = `<a class="btn btn-dark btn-sm" href="/contact?topic=independent-review">Get an independent review quote</a>`;
+    const bookAudit = `<a class="btn btn-dark btn-sm" href="/contact">Talk to me about your options</a>`;
+    const books = `<a class="btn btn-primary btn-sm" href="/solutions/ftg-books">Compile your own AFS with FTG Books</a>`;
+
+    if (isPublic || fiduciary || moi) {
+      badge = ['badge-danger', 'Audit required'];
+      title = 'An audit is required regardless of your score.';
+      const why = isPublic ? 'Public and state-owned companies must always be audited.' : fiduciary ? 'Companies holding more than R5 million in fiduciary assets for unrelated persons must be audited (Regulation 28(2)(a)).' : 'Your Memorandum of Incorporation or a shareholder or board resolution requires an audit.';
+      body = `<p>${why}</p><p>I do not perform audits, but I can prepare audit-ready financial statements, manage the process with your auditor and handle everything else. If the MOI is the only reason, it can often be amended.</p>`;
+      actions = bookAudit;
+    } else if (score >= 350) {
+      badge = ['badge-danger', 'Audit required'];
+      title = 'Your score of ' + score + ' means an audit is required.';
+      body = `<p>Any company with a public interest score of 350 or more must have its annual financial statements audited (Regulation 28(2)(c)).</p><p>I can prepare audit-ready statements and co-ordinate with a registered auditor.</p>`;
+      actions = bookAudit;
+    } else if (score >= 100) {
+      if (independent) {
+        badge = ['badge-warn', 'Independent review'];
+        title = 'Your score of ' + score + ' means an independent review is required.';
+        body = `<p>Because your statements are independently compiled, you need an independent review rather than an audit. With a score of 100 or more the reviewer must be a registered auditor or a member of a professional body accredited under the Auditing Profession Act, such as a SAIPA Professional Accountant (SA) (Regulation 29(4)(a)).</p><p>As an Independent Reviewer (SA) I can perform this engagement for you.</p>${owner ? '<p><strong>Note:</strong> the owner-managed exemption in section 30(2A) still applies to you, so strictly no review is required unless a lender, investor or your MOI asks for one. Many companies at this size choose a review anyway.</p>' : ''}`;
+        actions = bookReview;
+      } else {
+        badge = ['badge-danger', 'Audit, unless you change how AFS are compiled'];
+        title = 'Your score of ' + score + ' with internally compiled statements means an audit.';
+        body = `<p>A company with a score between 100 and 349 whose statements are compiled internally must be audited (Regulation 28(2)(c)(ii)). <strong>If an independent accounting professional compiles the statements instead, you drop to an independent review</strong>, which is faster and considerably cheaper.</p>${owner ? '<p>Because you are owner-managed, section 30(2A) exempts you from both audit and review once the statements are independently compiled.</p>' : ''}`;
+        actions = `<a class="btn btn-dark btn-sm" href="/contact?topic=afs">Have your AFS independently compiled</a>`;
+      }
+    } else {
+      if (owner) {
+        badge = ['badge-ok', 'No audit or review required'];
+        title = 'Score ' + score + ', owner-managed: you can do your own financials.';
+        body = `<p>With a public interest score below 100 and every shareholder also a director, section 30(2A) exempts your company from both audit and independent review. You may compile your own annual financial statements, approve them at board level and file them with your CIPC annual return together with a Financial Accountability Supplement.</p><p><strong>You do not need an accountant to compile your financial statements.</strong> FTG Books is built for exactly this: it keeps your books, calculates this score from your own data and compiles IFRS for SMEs compliant statements when you qualify. Your tax returns (ITR14, provisional tax, VAT, PAYE) are still due as normal.</p>`;
+        actions = books + ` <a class="btn btn-outline btn-sm" href="/contact">Ask a question</a>`;
+      } else {
+        badge = ['badge-warn', 'Independent review'];
+        title = 'Score ' + score + ', not owner-managed: an independent review is required.';
+        body = `<p>Your score is below 100, so no audit is required. Because not every shareholder is a director, the owner-managed exemption does not apply and your statements must be independently reviewed (Regulation 29). At this score the review may be performed by a registered auditor, an accredited professional body member, or anyone qualified to be an accounting officer of a close corporation.</p><p>An independent review is a limited-assurance engagement and typically costs a fraction of an audit. You may still compile the statements yourself in FTG Books and have me review them.</p>`;
+        actions = bookReview + ' ' + books;
+      }
+    }
+    setBadge(badge[0], badge[1]);
+    $('r-title').textContent = title;
+    $('r-body').innerHTML = body;
+    $('r-actions').innerHTML = actions;
+  }
+  form.addEventListener('submit', (e) => { e.preventDefault(); calc(); });
+  form.addEventListener('input', calc);
+  calc();
+</script>
+<style>
+  .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: start; }
+  .result { position: sticky; top: 90px; }
+  .result h3 { font-size: 1.25rem; }
+  @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } .result { position: static; } }
+</style>

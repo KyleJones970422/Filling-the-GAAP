@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+
+const products = [
+  { name: 'FTG Books', for: 'Small businesses and their accountants', status: 'Live', href: '/solutions/ftg-books', text: 'Cloud accounting built around South African compliance: bank imports, VAT, provisional tax estimates, an automatic PI score, and IFRS for SMEs annual financial statements you can compile yourself when you qualify.', price: 'Free for clients. Paid plans for everyone else.' },
+  { name: 'FTG Review', for: 'Accounting practices and independent reviewers', status: 'Live', href: '/solutions/ftg-review', text: 'An end-to-end workspace for ISRE 2400 independent review engagements: acceptance, planning, analytical procedures, enquiries, documentation and the review report, with the file always ready for inspection.', price: 'Per-practice subscription.' },
+  { name: 'Custom development', for: 'Businesses with a workflow problem', status: 'By engagement', href: '/solutions/custom-development', text: 'If your business runs on spreadsheets and WhatsApp, I can design and build the tool that replaces them, with the financial controls built in from the start.', price: 'Fixed-price quote.' },
+];
+---
+<Base title="Solutions" description="Software built by an accountant for South African businesses and accounting practices: FTG Books accounting software, FTG Review for independent review engagements, and custom development.">
+  <PageHero eyebrow="Solutions" title="Software built by an accountant who felt the gaps." lede="I build tools for the parts of accounting and compliance that should be simpler and cheaper than they are. Two products, plus custom builds for businesses that need something specific." />
+  <section class="section-tight">
+    <div class="wrap stack">
+      {products.map((p) => (
+        <a class="card-link" href={p.href}>
+          <div class="card product">
+            <div class="product-main">
+              <div class="product-head">
+                <h2>{p.name}</h2>
+                <span class="pill pill-outline">{p.status}</span>
+              </div>
+              <p class="muted small">For {p.for}</p>
+              <p>{p.text}</p>
+              <p class="small"><strong>{p.price}</strong></p>
+            </div>
+            <div class="product-shot" aria-hidden="true">
+              <div class="shot">
+                <div class="shot-bar"></div>
+                <div class="shot-lines"><span></span><span></span><span></span><span class="short"></span></div>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <CTA title="Want a demo?" text="Book a call and I will walk you through FTG Books or FTG Review on your own numbers." />
+</Base>
+<style>
+  .product { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; align-items: center; }
+  .product-head { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .product-head h2 { margin: 0; font-size: 1.8rem; }
+  .shot { background: linear-gradient(160deg, var(--pine), var(--ink)); border-radius: 12px; aspect-ratio: 16/10; padding: 10%; display: flex; flex-direction: column; gap: 10%; }
+  .shot-bar { height: 10%; background: var(--gold); border-radius: 4px; width: 40%; }
+  .shot-lines { display: flex; flex-direction: column; gap: 8%; flex: 1; }
+  .shot-lines span { display: block; height: 10%; background: rgba(255,255,255,0.25); border-radius: 3px; }
+  .shot-lines .short { width: 60%; }
+  @media (max-width: 760px) { .product { grid-template-columns: 1fr; } .product-shot { max-width: 320px; } }
+</style>

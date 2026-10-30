@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+
+const examples = [
+  { title: 'Job costing and quoting tools', text: 'For trades and manufacturers who quote from spreadsheets and never know their true margin.' },
+  { title: 'Levy and arrears management', text: 'For body corporates and managing agents who need statements, reminders and reconciliations without a full property system.' },
+  { title: 'Approval and expense workflows', text: 'Purchase orders, expense claims and petty cash with proper authorisation trails that an auditor will accept.' },
+  { title: 'Reporting dashboards', text: 'Live KPI dashboards on top of your accounting data, built around the numbers that drive your decisions.' },
+  { title: 'Client onboarding and document collection', text: 'For professional practices that chase the same FICA and engagement documents every year.' },
+  { title: 'Integrations', text: 'Connecting your point of sale, e-commerce store, payroll or CRM to your accounting system so nothing is captured twice.' },
+];
+---
+<Base title="Custom development" description="Custom business applications designed and built by an accountant: job costing, approval workflows, dashboards, client onboarding and integrations, with financial controls built in from the start.">
+  <PageHero eyebrow="Custom development" title="When off-the-shelf doesn't fit, I build the tool." lede="I design and build business applications with the financial controls baked in, because I know what an auditor, SARS or a bank will eventually ask for." />
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="grid grid-2" style="align-items:start">
+        <div class="prose">
+          <h2>Why an accountant who codes?</h2>
+          <p>Most custom software is built by developers who understand the technology and business owners who understand the operations. The piece that gets missed is control: who may approve what, how the numbers reconcile to the bank, what record must exist when someone asks. I have spent ten years on the receiving end of those questions, so I build the answers in from the first screen.</p>
+          <h3>How an engagement works</h3>
+          <ol>
+            <li><strong>Discovery call</strong> to understand the problem and the workflow around it.</li>
+            <li><strong>Written proposal</strong> with scope, a fixed price and a timeline.</li>
+            <li><strong>Build in stages</strong>, with a working version in your hands early and often.</li>
+            <li><strong>Launch and support</strong>, including training and documentation.</li>
+          </ol>
+          <p>Projects are quoted on a fixed-price basis. Smaller tools start from a few days of work; larger systems are scoped in phases so you can stop at any point with something useful.</p>
+        </div>
+        <div class="stack">
+          <span class="eyebrow">What I typically build</span>
+          {examples.map((e) => <div class="card"><h3 style="font-size:1.1rem">{e.title}</h3><p class="small mb-0">{e.text}</p></div>)}
+        </div>
+      </div>
+    </div>
+  </section>
+  <CTA title="Have a workflow that needs fixing?" text="Describe the problem in a sentence or two. If software is the answer, I will tell you what it would take. If it is not, I will tell you that too." />
+</Base>
