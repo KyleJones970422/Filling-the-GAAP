@@ -12,6 +12,13 @@ const year = new Date().getFullYear();
         <div class="creds">
           {site.credentials.map((c) => <span class="pill pill-outline cred">{c}</span>)}
         </div>
+        {(site.registrations.saipa || site.registrations.sarsPractitioner) && (
+          <p class="muted-light regs">
+            {site.registrations.saipa && <span>SAIPA member {site.registrations.saipa}</span>}
+            {site.registrations.saipa && site.registrations.sarsPractitioner && <span> · </span>}
+            {site.registrations.sarsPractitioner && <span>SARS tax practitioner {site.registrations.sarsPractitioner}</span>}
+          </p>
+        )}
       </div>
       <div>
         <h4>Services</h4>
@@ -26,7 +33,7 @@ const year = new Date().getFullYear();
         <h4>Solutions</h4>
         <ul>
           <li><a href="/solutions/ftg-books">FTG Books</a></li>
-          <li><a href="/solutions/ftg-review">FTG Review</a></li>
+          <li><a href="/solutions/ftg-review">FTG Review (for practices)</a></li>
           <li><a href="/solutions/custom-development">Custom development</a></li>
           <li><a href="/tools">Free tools</a></li>
         </ul>
@@ -65,6 +72,7 @@ const year = new Date().getFullYear();
   a { color: var(--on-dark); text-decoration: none; }
   a:hover { color: var(--sage); }
   .muted-light { color: rgba(191,207,200,0.7); font-size: 0.92rem; }
+  .regs { margin-top: 0.6rem; font-size: 0.85rem; }
   .foot-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--line-on-dark); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.9rem; }
   .foot-bottom p { margin: 0; }
   .foot-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }

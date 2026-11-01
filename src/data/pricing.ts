@@ -39,33 +39,47 @@ export const personalPlans: Plan[] = [
 
 export const businessPlans: Plan[] = [
   {
-    name: 'Starter',
-    price: 'R2,250',
+    name: 'Compliance',
+    price: 'R1,450',
     period: 'per month',
-    tagline: 'For new and micro businesses that need the basics done properly.',
-    features: ['Monthly bookkeeping (up to 60 transactions)', 'Bank reconciliations', 'VAT201 returns if registered', 'Annual financial statements', 'Company income tax return (ITR14)', 'Provisional tax (IRP6)', 'Free FTG Books subscription'],
+    tagline: 'Turnover under R1 million. You keep your own books in FTG Books; I handle every filing.',
+    features: ['Annual financial statements', 'Company income tax return (ITR14)', 'Provisional tax (IRP6), twice a year', 'CIPC annual return and beneficial ownership filing', 'Quarterly check of your books', 'Free FTG Books subscription'],
+  },
+  {
+    name: 'Starter',
+    price: 'R2,450',
+    period: 'per month',
+    tagline: 'Turnover under R1 million. The books done for you, plus all compliance.',
+    features: ['Everything in Compliance', 'Monthly bookkeeping and bank reconciliations', 'VAT201 returns if registered', 'Annual tax planning review', 'WhatsApp access for quick questions'],
   },
   {
     name: 'Growth',
     price: 'R4,950',
     period: 'per month',
-    tagline: 'For established small businesses with staff and regular reporting needs.',
-    features: ['Everything in Starter', 'Up to 200 transactions a month', 'Payroll for up to 5 employees (EMP201, EMP501, IRP5s)', 'Quarterly management accounts', 'CIPC annual return and beneficial ownership filing', 'Tax planning review once a year'],
+    tagline: 'Turnover R1 million to R5 million. Staff, VAT and regular reporting.',
+    features: ['Everything in Starter', 'Payroll for up to 5 employees (EMP201, EMP501, IRP5s)', 'Quarterly management accounts', 'Cash flow forecast updated quarterly', 'Half-yearly review meeting'],
     highlight: true,
   },
   {
     name: 'Established',
     price: 'R9,500',
     period: 'per month',
-    tagline: 'For growing companies that want a finance function without the headcount.',
-    features: ['Everything in Growth', 'Unlimited transactions', 'Payroll for up to 20 employees', 'Monthly management accounts and cash flow forecast', 'Independent review of annual financial statements', 'Quarterly strategy meeting', 'Priority response'],
+    tagline: 'Turnover R5 million and up. A finance function without the headcount.',
+    features: ['Everything in Growth', 'Payroll for up to 20 employees', 'Monthly management accounts and cash flow forecast', 'Independent review of annual financial statements', 'Quarterly strategy meeting', 'Priority response'],
   },
 ];
 
-export const onceOff: { service: string; price: string; note?: string }[] = [
-  { service: 'Company registration (CIPC)', price: 'from R1,450', note: 'Includes name reservation, registration, share certificates and SARS income tax registration. CIPC fees included.' },
+export type OnceOff = { service: string; price: string; note?: string };
+
+/** The four services people search for most. Shown first on the pricing page. */
+export const mostRequested: OnceOff[] = [
+  { service: 'Company registration (CIPC)', price: 'from R1,450', note: 'Name reservation, registration, share certificates and SARS income tax registration. CIPC fees included.' },
+  { service: 'Personal tax return (ITR12)', price: 'from R850', note: 'See the personal tax packages above for what each level includes.' },
   { service: 'Annual financial statements (compilation)', price: 'from R4,500', note: 'Depends on size, complexity and the state of the underlying records.' },
   { service: 'Independent review (ISRE 2400)', price: 'from R8,500', note: 'For companies with a public interest score below 350 that are not owner-managed or have a PI score of 100 or more.' },
+];
+
+export const onceOff: OnceOff[] = [
   { service: 'VAT registration', price: 'from R1,850' },
   { service: 'PAYE / UIF / SDL registration', price: 'from R1,250' },
   { service: 'CIPC annual return and beneficial ownership', price: 'from R650', note: 'Plus CIPC fee.' },

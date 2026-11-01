@@ -20,12 +20,13 @@ Node 22 is required.
 | What | Where |
 | --- | --- |
 | Phone, email, hours, booking link, social links, credentials | `src/config.ts` |
+| Registration numbers (SAIPA, SARS), headshot path, Google reviews link, testimonials, the four promises, VAT note under prices | `src/config.ts` |
 | Navigation menu | `src/config.ts` (`nav`) |
 | Service lists and client types | `src/data/services.ts` |
 | Prices and packages | `src/data/pricing.ts` |
 | FAQ answers | `src/data/faq.ts` |
 | Tax calendar deadlines | `src/data/calendar.ts` |
-| Income tax tables (add a new tax year here) | `src/data/tax-tables.ts` |
+| Income tax tables (add a new tax year here; the default year is `defaultTaxYear` in `src/config.ts`) | `src/data/tax-tables.ts` |
 | Colours, fonts, spacing | `src/styles/global.css` (the `:root` block) |
 | Logo mark | `src/components/Logo.astro`, `public/favicon.svg`, `public/logo.svg` |
 | Page copy | `src/pages/**/*.astro` |
@@ -47,6 +48,13 @@ draft: false             # true hides the post
 
 Your content in Markdown.
 ```
+
+### Things to fill in before launch
+
+- `registrations.saipa` and `registrations.sarsPractitioner` in `src/config.ts`: shown on the About page and footer so prospects can verify you. Hidden while empty.
+- `headshot`: drop a photo into `public/` (e.g. `public/kyle.jpg`) and set `headshot: '/kyle.jpg'`. Initials show until then.
+- `reviews` and `googleReviewsUrl`: add testimonials as `{ quote, name, role, rating }`. The section appears on the home page once there is at least one.
+- `pricesNote`: currently "Prices exclude VAT where applicable." Change it if you are not VAT registered.
 
 ### Enabling the booking calendar
 

@@ -1,0 +1,33 @@
+---
+import { site } from '../config';
+const reviews = site.reviews;
+---
+{reviews.length > 0 && (
+  <section class="section">
+    <div class="wrap">
+      <div class="header-row">
+        <div>
+          <span class="eyebrow">What clients say</span>
+          <h2>In their words.</h2>
+        </div>
+        {site.googleReviewsUrl && <a class="btn btn-outline btn-sm" href={site.googleReviewsUrl} target="_blank" rel="noopener">Read reviews on Google</a>}
+      </div>
+      <div class="grid grid-3">
+        {reviews.map((r) => (
+          <figure class="card review">
+            {r.rating && <div class="stars" aria-label={`${r.rating} out of 5 stars`}>{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</div>}
+            <blockquote>{r.quote}</blockquote>
+            <figcaption><strong>{r.name}</strong><span>{r.role}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+<style>
+  .review { display: flex; flex-direction: column; gap: 0.8rem; margin: 0; }
+  .stars { color: var(--accent); letter-spacing: 0.1em; }
+  blockquote { margin: 0; font-size: 1.02rem; }
+  figcaption { display: flex; flex-direction: column; font-size: 0.9rem; color: var(--muted); margin-top: auto; }
+  figcaption strong { color: var(--heading); }
+</style>

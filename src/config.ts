@@ -22,13 +22,37 @@ export const site = {
     'Professional Tax Practitioner (SA)',
     'Independent Reviewer (SA)',
   ],
+  /**
+   * Registration numbers shown on the About page and in the footer so prospects can verify you.
+   * Leave a value empty to hide that line until you have it.
+   */
+  registrations: {
+    saipa: '',        // SAIPA membership number, e.g. '12345'
+    sarsPractitioner: '', // SARS tax practitioner number, e.g. 'PR-1234567'
+    cipcCustomerCode: '', // optional
+  },
+  /** Path under /public to your headshot, e.g. '/kyle.jpg'. Leave empty to show initials. */
+  headshot: '',
+  /** Google Business Profile review link. When set, a "Review us on Google" link appears with the testimonials. */
+  googleReviewsUrl: '',
+  /** Client testimonials. The section is hidden until this list has at least one entry. */
+  reviews: [] as { quote: string; name: string; role: string; rating?: number }[],
+  /** Shown under every price. Change if you are not VAT registered. */
+  pricesNote: 'Prices exclude VAT where applicable.',
+  /** The four promises shown on the home and pricing pages. */
+  promises: [
+    { title: 'Fixed fees, in writing', text: 'A written quote before any work starts. No hourly billing and no surprise invoices.' },
+    { title: 'Month to month', text: 'No lock-in contracts. One month\'s notice if you ever want to leave, with a proper handover.' },
+    { title: 'Reply within one business day', text: 'Email, WhatsApp or phone. You deal with me directly, every time, not a call centre.' },
+    { title: 'Free switch', text: 'Moving from another accountant? I handle the clearance, SARS and CIPC access and the catch-up at no charge.' },
+  ],
   social: {
     linkedin: '',
     facebook: '',
     instagram: '',
   },
   /** The tax year the calculator defaults to. Tables live in src/data/tax-tables.ts */
-  defaultTaxYear: 2026,
+  defaultTaxYear: 2027,
 };
 
 export const whatsappLink = (text = 'Hi Kyle, I found you via ftgaap.co.za and would like to chat about my accounting and tax needs.') =>
@@ -38,19 +62,19 @@ export const nav = [
   { label: 'Services', href: '/services', children: [
     { label: 'For individuals', href: '/services/individuals' },
     { label: 'For businesses', href: '/services/businesses' },
+    { label: 'Switching accountants', href: '/services/businesses#switching' },
     { label: 'Pricing', href: '/pricing' },
   ]},
   { label: 'Solutions', href: '/solutions', children: [
     { label: 'FTG Books', href: '/solutions/ftg-books' },
-    { label: 'FTG Review', href: '/solutions/ftg-review' },
     { label: 'Custom development', href: '/solutions/custom-development' },
   ]},
-  { label: 'Tools', href: '/tools', children: [
+  { label: 'Resources', href: '/resources', children: [
+    { label: 'Articles', href: '/resources' },
+    { label: 'Tax calendar', href: '/resources/tax-calendar' },
     { label: 'Income tax calculator', href: '/tools/income-tax-calculator' },
     { label: 'PI score calculator', href: '/tools/pi-score-calculator' },
-    { label: 'Tax calendar', href: '/resources/tax-calendar' },
   ]},
-  { label: 'Resources', href: '/resources' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];

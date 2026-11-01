@@ -3,7 +3,9 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTA from '../../components/CTA.astro';
 import Faq from '../../components/Faq.astro';
-import { businessServices } from '../../data/services';
+import ServiceGroups from '../../components/ServiceGroups.astro';
+import { businessGroups, switching } from '../../data/services';
+import { site } from '../../config';
 import { businessFaq } from '../../data/faq';
 import { businessPlans } from '../../data/pricing';
 ---
@@ -16,13 +18,8 @@ import { businessPlans } from '../../data/pricing';
   </PageHero>
 
   <section class="section-tight">
-    <div class="wrap grid grid-3">
-      {businessServices.map((s) => (
-        <div class="card" id={s.title.startsWith('Independent reviews') ? 'reviews' : undefined}>
-          <h3>{s.title}</h3>
-          <p>{s.blurb}</p>
-        </div>
-      ))}
+    <div class="wrap">
+      <ServiceGroups groups={businessGroups} />
     </div>
   </section>
 
@@ -51,11 +48,33 @@ import { businessPlans } from '../../data/pricing';
     </div>
   </section>
 
+  <section class="section" id="switching">
+    <div class="wrap">
+      <div class="header-row">
+        <div>
+          <span class="eyebrow">Switching accountants</span>
+          <h2>Moving to me is free, and I do the admin.</h2>
+        </div>
+        <a class="btn btn-dark btn-sm" href="/contact?topic=business">Start the switch</a>
+      </div>
+      <ol class="switch-steps">
+        {switching.map((st, i) => (
+          <li>
+            <span class="step-n">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{st.title}</h3>
+            <p>{st.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="small muted" style="margin-top:1.2rem">Tip: the quietest time to switch is straight after your financial year end or after filing season. Any time works, but those two avoid a handover in the middle of a deadline.</p>
+    </div>
+  </section>
+
   <section class="section section-alt" id="pricing">
     <div class="wrap">
       <span class="eyebrow">Monthly retainers</span>
       <h2>Pick the level of support you need.</h2>
-      <div class="grid grid-3 mt-2">
+      <div class="grid grid-4 mt-2">
         {businessPlans.map((p) => (
           <div class:list={['card plan', { highlight: p.highlight }]}>
             <h3>{p.name}</h3>
@@ -65,7 +84,7 @@ import { businessPlans } from '../../data/pricing';
           </div>
         ))}
       </div>
-      <p class="small muted" style="margin-top:1.2rem">Indicative prices. Once-off services such as company registration and independent reviews are on the <a href="/pricing">full pricing page</a>.</p>
+      <p class="small muted" style="margin-top:1.2rem">Indicative prices. {site.pricesNote} Once-off services such as company registration and independent reviews are on the <a href="/pricing">full pricing page</a>.</p>
     </div>
   </section>
 
@@ -83,8 +102,15 @@ import { businessPlans } from '../../data/pricing';
   .review-table { background: rgba(255,255,255,0.05); border: 1px solid var(--line-on-dark); border-radius: var(--radius); padding: 1rem; }
   .review-table th { color: var(--sage); }
   .review-table td { color: var(--on-dark); border-color: var(--line-on-dark); }
+  .switch-steps { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .switch-steps li { margin: 0; padding-top: 1rem; border-top: 2px solid var(--border); }
+  .step-n { display: inline-block; font-family: var(--font-heading); font-weight: 800; color: var(--accent-dark); font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .switch-steps h3 { font-size: 1.1rem; }
+  .switch-steps p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+  @media (max-width: 900px) { .switch-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .switch-steps { grid-template-columns: 1fr; } }
   .plan.highlight { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
-  .price { font-family: var(--font-heading); font-size: 1.8rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
-  .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); }
+  .price { font-family: var(--font-heading); font-size: 1.6rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
+  .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); display: block; font-weight: 500; }
   @media (max-width: 860px) { .review-grid { grid-template-columns: 1fr; } }
 </style>

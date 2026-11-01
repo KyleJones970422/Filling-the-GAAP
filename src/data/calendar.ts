@@ -14,12 +14,13 @@ export const monthly: Deadline[] = [
 
 export const annual: Deadline[] = [
   { when: '31 May', what: 'Annual EMP501 employer reconciliation', who: 'All employers, for the tax year ended 28/29 February', category: 'Payroll', detail: 'IRP5 and IT3(a) certificates are issued to employees from this submission.' },
-  { when: 'Early to mid July', what: 'Individual filing season opens', who: 'Individuals', category: 'SARS', detail: 'SARS issues auto-assessments first, then opens filing for everyone else. Check your auto-assessment before accepting it.' },
+  { when: '1 to 12 July', what: 'SARS issues auto-assessments', who: 'Individuals with simple tax affairs', category: 'SARS', detail: '2026 season: 1 to 12 July 2026. Check your auto-assessment before accepting it; it does not include deductions SARS cannot see.' },
+  { when: '13 July', what: 'Individual filing season opens', who: 'Individuals and provisional taxpayers', category: 'SARS', detail: '2026 season opened on 13 July 2026. Trusts opened on 19 September 2026.' },
   { when: '31 August', what: 'First provisional tax payment (IRP6)', who: 'Provisional taxpayers with a February year end', category: 'SARS', detail: 'Based on at least the basic amount or a reasonable estimate of the full year taxable income.' },
   { when: '30 September', what: 'Voluntary third provisional (top-up) payment', who: 'Provisional taxpayers with a February year end', category: 'SARS', detail: 'Avoids interest on any shortfall for the previous tax year.' },
-  { when: 'Around 20 October', what: 'Filing season closes for non-provisional individuals', who: 'Individuals who are not provisional taxpayers', category: 'SARS' },
+  { when: 'Late October', what: 'Filing season closes for non-provisional individuals', who: 'Individuals who are not provisional taxpayers', category: 'SARS', detail: '2026 season closed on 23 October 2026. Returns filed after this date attract monthly administrative penalties.' },
   { when: '31 October', what: 'Interim EMP501 reconciliation', who: 'All employers, for March to August', category: 'Payroll' },
-  { when: 'Around 19 January', what: 'Filing season closes for provisional taxpayers and trusts', who: 'Provisional taxpayers and trusts (ITR12 and IT12T)', category: 'SARS' },
+  { when: 'Late January', what: 'Filing season closes for provisional taxpayers and trusts', who: 'Provisional taxpayers and trusts (ITR12 and IT12T)', category: 'SARS', detail: '2026 season closes on 22 January 2027.' },
   { when: '28 or 29 February', what: 'Second provisional tax payment (IRP6)', who: 'Provisional taxpayers with a February year end', category: 'SARS', detail: 'Estimate must be at least 80% of actual taxable income (90% if above R1 million) to avoid underestimation penalties.' },
   { when: '28 or 29 February', what: 'End of the tax year for individuals and most companies', who: 'Everyone', category: 'SARS' },
   { when: '12 months after financial year end', what: 'Company income tax return (ITR14)', who: 'All companies, including dormant ones', category: 'SARS', detail: 'Companies with a non-February year end have provisional payments six months into the year and at year end.' },

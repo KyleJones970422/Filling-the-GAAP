@@ -18,6 +18,25 @@ export type TaxYear = {
 };
 
 export const taxYears: Record<number, TaxYear> = {
+  2027: {
+    label: '2027 tax year',
+    period: '1 March 2026 to 28 February 2027',
+    brackets: [
+      { from: 0, upTo: 245_100, base: 0, rate: 0.18 },
+      { from: 245_101, upTo: 383_100, base: 44_118, rate: 0.26 },
+      { from: 383_101, upTo: 530_200, base: 79_998, rate: 0.31 },
+      { from: 530_201, upTo: 695_800, base: 125_599, rate: 0.36 },
+      { from: 695_801, upTo: 887_000, base: 185_215, rate: 0.39 },
+      { from: 887_001, upTo: 1_878_600, base: 259_783, rate: 0.41 },
+      { from: 1_878_601, upTo: null, base: 666_339, rate: 0.45 },
+    ],
+    rebates: { primary: 17_820, secondary: 9_765, tertiary: 3_249 },
+    thresholds: { under65: 99_000, from65: 153_250, from75: 171_300 },
+    medicalCredit: { firstTwo: 376, additional: 254 },
+    interestExemption: { under65: 23_800, from65: 34_500 },
+    uifCeiling: 17_712,
+    notes: 'The 2026 Budget adjusted brackets, rebates and thresholds for inflation by 3.4%, the first adjustment since the 2024 tax year.',
+  },
   2026: {
     label: '2026 tax year',
     period: '1 March 2025 to 28 February 2026',

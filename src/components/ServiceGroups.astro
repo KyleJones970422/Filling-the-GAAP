@@ -1,0 +1,45 @@
+---
+import type { ServiceGroup } from '../data/services';
+interface Props { groups: ServiceGroup[] }
+const { groups } = Astro.props;
+---
+<div class="groups">
+  {groups.map((g, i) => (
+    <section class="group card" id={g.id}>
+      <div class="group-head">
+        <span class="group-n">{String(i + 1).padStart(2, '0')}</span>
+        <div>
+          <h2>{g.title}</h2>
+          <p class="muted">{g.intro}</p>
+        </div>
+      </div>
+      <div class="group-items">
+        {g.services.map((s) => (
+          <details class="svc">
+            <summary><span>{s.title}</span></summary>
+            <div class="svc-body">
+              <p>{s.blurb}</p>
+              {s.details && <ul class="check-list small">{s.details.map((d) => <li>{d}</li>)}</ul>}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>
+<style>
+  .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 1.25rem; }
+  .group { padding: 1.6rem; }
+  .group-head { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 0.8rem; }
+  .group-n { font-family: var(--font-heading); font-weight: 800; color: var(--accent-dark); font-size: 1.2rem; padding-top: 0.25rem; }
+  .group h2 { font-size: 1.35rem; margin-bottom: 0.2rem; }
+  .group-head p { margin: 0; font-size: 0.95rem; }
+  .svc { border-top: 1px solid var(--border); }
+  .svc summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.75rem 0; font-weight: 700; color: var(--heading); }
+  .svc summary::-webkit-details-marker { display: none; }
+  .svc summary::after { content: '+'; color: var(--accent-dark); font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+  .svc[open] summary::after { content: '−'; }
+  .svc-body { padding: 0 0 1rem; }
+  .svc-body p { margin-bottom: 0.6rem; }
+  .svc-body ul { margin: 0; }
+</style>

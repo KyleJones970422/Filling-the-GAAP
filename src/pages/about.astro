@@ -2,14 +2,9 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CTA from '../components/CTA.astro';
+import Promises from '../components/Promises.astro';
 import { site } from '../config';
 
-const values = [
-  { title: 'Plain English', text: 'You should never leave a conversation with your accountant more confused than when you arrived. I explain the why, not just the what.' },
-  { title: 'Honest scope', text: 'If you do not need a service, I will say so. Sometimes the right answer is "do this yourself in FTG Books", and I will show you how.' },
-  { title: 'Proactive, not reactive', text: 'Deadlines are tracked months out. You hear from me before SARS does, not after.' },
-  { title: 'Technology where it helps', text: 'I build software because I have felt the gaps in the tools we are given. Automation handles the repetitive work so our time together goes to decisions.' },
-];
 ---
 <Base title="About" description={`Meet ${site.owner}, the Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA) behind Filling the GAAP. Ten years across audit, industry and financial management.`}>
   <PageHero eyebrow="About" title="An accountant who has sat on both sides of the desk." lede="Ten years across the auditing profession and as a financial manager in industry, now in a one-person practice built around straight answers and good software." />
@@ -17,12 +12,23 @@ const values = [
   <section class="section-tight">
     <div class="wrap about-grid">
       <div class="portrait" aria-hidden="true">
-        <div class="portrait-frame">
-          <span class="initials">KJ</span>
-        </div>
+        {site.headshot ? (
+          <img class="portrait-img" src={site.headshot} alt={site.owner} width="300" height="375" loading="eager" />
+        ) : (
+          <div class="portrait-frame">
+            <span class="initials">KJ</span>
+          </div>
+        )}
         <ul class="cred-list">
           {site.credentials.map((c) => <li>{c}</li>)}
         </ul>
+        {(site.registrations.saipa || site.registrations.sarsPractitioner) && (
+          <div class="verify">
+            <h4>Verify my registration</h4>
+            {site.registrations.saipa && <p>SAIPA member no. <strong>{site.registrations.saipa}</strong><br /><a href="https://www.saipa.co.za/" target="_blank" rel="noopener">Check on the SAIPA register</a></p>}
+            {site.registrations.sarsPractitioner && <p>SARS tax practitioner no. <strong>{site.registrations.sarsPractitioner}</strong><br /><a href="https://www.sars.gov.za/individuals/tax-practitioners/" target="_blank" rel="noopener">Check on SARS eFiling</a></p>}
+          </div>
+        )}
       </div>
       <div class="prose">
         <h2>Hello, I'm {site.owner}.</h2>
@@ -40,15 +46,7 @@ const values = [
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="wrap">
-      <span class="eyebrow">How I work</span>
-      <h2>Four things you can hold me to.</h2>
-      <div class="grid grid-2 mt-2">
-        {values.map((v) => <div class="card"><h3>{v.title}</h3><p>{v.text}</p></div>)}
-      </div>
-    </div>
-  </section>
+  <Promises />
 
   <CTA title="Let's see if we're a fit." text="A free 30-minute call. No pitch, just a conversation about where you are and what would help." />
 </Base>
@@ -58,5 +56,9 @@ const values = [
   .initials { font-family: var(--font-heading); font-size: 4rem; color: var(--accent-soft); letter-spacing: 0.05em; }
   .cred-list { list-style: none; padding: 0; margin: 1rem 0 0; }
   .cred-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--heading); font-size: 0.95rem; }
+  .portrait-img { border-radius: var(--radius); box-shadow: var(--shadow); object-fit: cover; aspect-ratio: 4/5; width: 100%; }
+  .verify { margin-top: 1.2rem; font-size: 0.9rem; }
+  .verify h4 { margin-bottom: 0.5rem; }
+  .verify p { margin-bottom: 0.6rem; }
   @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } .portrait { max-width: 260px; } }
 </style>
