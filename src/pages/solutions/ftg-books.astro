@@ -96,21 +96,21 @@ const ld = {
 </Base>
 <style>
   .plan { position: relative; }
-  .plan.highlight { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), var(--shadow); }
-  .plan .pill { position: absolute; top: -0.8rem; right: 1.2rem; background: var(--gold); color: var(--ink); }
-  .price { font-family: var(--font-display); font-size: 1.7rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
+  .plan.highlight { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .plan .pill { position: absolute; top: -0.8rem; right: 1.2rem; background: var(--accent); color: var(--primary-dark); }
+  .price { font-family: var(--font-heading); font-size: 1.7rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
   .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); display: block; }
   .screen { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; max-width: 900px; margin: 0 auto; }
   .s-top { display: flex; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
   .s-top span { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
   .s-body { display: grid; grid-template-columns: 160px 1fr; min-height: 320px; }
-  .s-side { background: var(--ink); }
+  .s-side { background: var(--primary-dark); }
   .s-main { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
   .s-row { height: 14px; border-radius: 4px; background: var(--border); width: 70%; }
-  .s-row.wide { width: 40%; height: 22px; background: var(--mint); }
+  .s-row.wide { width: 40%; height: 22px; background: var(--soft); }
   .s-row.short { width: 45%; }
   .s-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .s-cards div { height: 70px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); }
-  .s-cards div:first-child { background: var(--gold-soft); }
+  .s-cards div:first-child { background: var(--accent-soft); }
   @media (max-width: 600px) { .s-body { grid-template-columns: 1fr; } .s-side { height: 36px; } }
 </style>

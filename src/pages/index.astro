@@ -191,34 +191,34 @@ const ld = {
 </Base>
 
 <style>
-  .hero { padding: clamp(3rem, 7vw, 6rem) 0; background: radial-gradient(900px 500px at 85% 10%, rgba(194,153,63,0.22), transparent 60%), var(--ink); overflow: hidden; }
+  .hero { padding: clamp(3rem, 7vw, 6rem) 0; background: radial-gradient(900px 500px at 85% 10%, rgba(196,103,69,0.2), transparent 60%), var(--primary-dark); overflow: hidden; }
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; }
   .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); max-width: 20ch; }
-  .hero-creds { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; gap: 0.6rem 1.4rem; flex-wrap: wrap; font-size: 0.9rem; color: var(--gold-light); }
+  .hero-creds { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; gap: 0.6rem 1.4rem; flex-wrap: wrap; font-size: 0.9rem; color: var(--sage); }
   .hero-creds li { position: relative; padding-left: 1.1rem; margin: 0; }
-  .hero-creds li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .hero-creds li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
   .hero-panel { display: flex; justify-content: center; }
-  .panel-card { width: 100%; max-width: 380px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; padding: 1.4rem; backdrop-filter: blur(6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6); }
-  .panel-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+  .panel-card { width: 100%; max-width: 380px; background: rgba(255,255,255,0.06); border: 1px solid var(--line-on-dark); border-radius: 18px; padding: 1.4rem; backdrop-filter: blur(6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6); }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 1rem; }
   .dot { width: 10px; height: 10px; border-radius: 50%; background: #3fe07a; box-shadow: 0 0 0 4px rgba(63,224,122,0.2); }
   .panel-list { list-style: none; padding: 0; margin: 0; }
-  .panel-list li { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.93rem; color: rgba(246,243,236,0.85); margin: 0; }
+  .panel-list li { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--line-on-dark); font-size: 0.93rem; color: var(--on-dark); margin: 0; }
   .panel-list b { color: #fff; font-weight: 600; }
-  .panel-foot { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; margin-top: 1rem; font-size: 0.9rem; color: rgba(246,243,236,0.8); align-items: center; }
-  .panel-foot b { font-family: var(--font-display); font-size: 2rem; color: var(--gold-light); grid-row: span 2; }
-  .panel-note { font-size: 0.8rem; color: rgba(246,243,236,0.6); }
+  .panel-foot { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; margin-top: 1rem; font-size: 0.9rem; color: var(--on-dark); align-items: center; }
+  .panel-foot b { font-family: var(--font-heading); font-weight: 800; font-size: 2rem; color: var(--sage); grid-row: span 2; }
+  .panel-note { font-size: 0.8rem; color: rgba(191,207,200,0.7); }
   .trust { border-bottom: 1px solid var(--border); }
   .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
   .pillar { display: flex; flex-direction: column; }
-  .pillar .more { margin-top: auto; padding-top: 0.8rem; font-weight: 700; color: var(--gold-strong); font-size: 0.9rem; }
+  .pillar .more { margin-top: auto; padding-top: 0.8rem; font-weight: 700; color: var(--accent-dark); font-size: 0.9rem; }
   .feature-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
   .logos { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 1.5rem; }
-  .quote-card { background: var(--ink); color: rgba(246,243,236,0.9); border-radius: var(--radius); padding: 1.6rem; font-family: var(--font-display); font-size: 1.15rem; line-height: 1.5; }
+  .quote-card { background: var(--primary-dark); color: var(--on-dark); border-radius: var(--radius); padding: 1.6rem; font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; line-height: 1.55; }
   .quote-card p { margin: 0 0 1rem; }
-  .quote-card footer { font-family: var(--font-body); font-size: 0.85rem; color: var(--gold-light); }
+  .quote-card footer { font-family: var(--font-body); font-size: 0.85rem; color: var(--sage); }
   .steps { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; counter-reset: s; }
   .steps li { margin: 0; padding-top: 1rem; border-top: 2px solid var(--border); }
-  .step-n { display: inline-block; font-family: var(--font-display); color: var(--gold-strong); font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .step-n { display: inline-block; font-family: var(--font-heading); color: var(--accent-dark); font-size: 1.3rem; margin-bottom: 0.5rem; }
   .steps h3 { font-size: 1.15rem; }
   .steps p { color: var(--muted); font-size: 0.97rem; margin: 0; }
   @media (max-width: 900px) {

@@ -42,10 +42,10 @@ const products = [
   .product { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; align-items: center; }
   .product-head { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
   .product-head h2 { margin: 0; font-size: 1.8rem; }
-  .shot { background: linear-gradient(160deg, var(--pine), var(--ink)); border-radius: 12px; aspect-ratio: 16/10; padding: 10%; display: flex; flex-direction: column; gap: 10%; }
-  .shot-bar { height: 10%; background: var(--gold); border-radius: 4px; width: 40%; }
+  .shot { background: linear-gradient(160deg, var(--primary), var(--primary-dark)); border-radius: 12px; aspect-ratio: 16/10; padding: 10%; display: flex; flex-direction: column; gap: 10%; }
+  .shot-bar { height: 10%; background: var(--accent); border-radius: 4px; width: 40%; }
   .shot-lines { display: flex; flex-direction: column; gap: 8%; flex: 1; }
-  .shot-lines span { display: block; height: 10%; background: rgba(255,255,255,0.25); border-radius: 3px; }
+  .shot-lines span { display: block; height: 10%; background: var(--line-on-dark); border-radius: 3px; }
   .shot-lines .short { width: 60%; }
   @media (max-width: 760px) { .product { grid-template-columns: 1fr; } .product-shot { max-width: 320px; } }
 </style>
