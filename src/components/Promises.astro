@@ -1,0 +1,31 @@
+---
+import { site } from '../config';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<section class:list={['section-tight promises', { compact }]}>
+  <div class="wrap">
+    {!compact && <span class="eyebrow">How we work</span>}
+    {!compact && <h2>Four things you can hold us to.</h2>}
+    <ul class="promise-grid">
+      {site.promises.map((p) => (
+        <li>
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><h3>{p.title}</h3><p>{p.text}</p></div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .promises { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+  .promise-grid { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .compact .promise-grid { margin-top: 0; }
+  li { display: flex; gap: 0.8rem; margin: 0; }
+  .tick { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; flex-shrink: 0; margin-top: 0.15rem; }
+  .tick svg { width: 14px; height: 14px; }
+  h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+  p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  @media (max-width: 900px) { .promise-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .promise-grid { grid-template-columns: 1fr; } }
+</style>

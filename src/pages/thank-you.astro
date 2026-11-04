@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { whatsappLink } from '../config';
+---
+<Base title="Thank you" noindex>
+  <section class="section">
+    <div class="wrap narrow center">
+      <span class="eyebrow">Message received</span>
+      <h1>Thank you. We'll be in touch within one business day.</h1>
+      <p class="lede mx-auto">If it is urgent, WhatsApp us and we will come back to you sooner.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-whatsapp" href={whatsappLink()} target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-outline" href="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+</Base>

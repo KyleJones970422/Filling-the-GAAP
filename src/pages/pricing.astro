@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CTA from '../components/CTA.astro';
+import Promises from '../components/Promises.astro';
+import { personalPlans, businessPlans, onceOff, mostRequested } from '../data/pricing';
+import { site } from '../config';
+---
+<Base title="Pricing" description="Transparent, market-related pricing for personal tax returns, monthly business accounting retainers, company registration, independent reviews, payroll and more. All prices in ZAR.">
+  <PageHero eyebrow="Pricing" title="Fixed fees. No surprises." lede="Every price below is an indicative starting point. After a free consultation you receive a written quote, and no work starts until you approve it." />
+  <Promises compact />
+
+  <section class="section-tight" id="most-requested">
+    <div class="wrap">
+      <h2>Most requested</h2>
+      <div class="grid grid-4 mt-2">
+        {mostRequested.map((o) => (
+          <div class="card mini">
+            <h3>{o.service}</h3>
+            <div class="price small-price">{o.price}</div>
+            {o.note && <p class="small muted mb-0">{o.note}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="personal">
+    <div class="wrap">
+      <h2>Personal tax</h2>
+      <div class="grid grid-3 mt-2">
+        {personalPlans.map((p) => (
+          <div class:list={['card plan', { highlight: p.highlight }]}>
+            {p.highlight && <span class="pill">Most popular</span>}
+            <h3>{p.name}</h3>
+            <div class="price">from {p.price} <small>{p.period}</small></div>
+            <p class="muted">{p.tagline}</p>
+            <ul class="check-list small">{p.features.map((f) => <li>{f}</li>)}</ul>
+            <a class="btn btn-outline btn-sm" href="/contact" style="margin-top:1.2rem">Get a quote</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="business">
+    <div class="wrap">
+      <h2>Business retainers</h2>
+      <p class="lede">Monthly plans by turnover band, from compliance-only to a full finance function. Every plan includes a free FTG Books subscription and month-to-month terms.</p>
+      <div class="grid grid-4 mt-2">
+        {businessPlans.map((p) => (
+          <div class:list={['card plan', { highlight: p.highlight }]}>
+            {p.highlight && <span class="pill">Most popular</span>}
+            <h3>{p.name}</h3>
+            <div class="price">from {p.price} <small>{p.period}</small></div>
+            <p class="muted">{p.tagline}</p>
+            <ul class="check-list small">{p.features.map((f) => <li>{f}</li>)}</ul>
+            <a class="btn btn-outline btn-sm" href="/contact" style="margin-top:1.2rem">Get a quote</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="once-off">
+    <div class="wrap">
+      <h2>Everything else, once-off</h2>
+      <div class="table-wrap mt-2">
+        <table>
+          <thead><tr><th>Service</th><th>Price</th><th>Notes</th></tr></thead>
+          <tbody>
+            {onceOff.map((o) => <tr><td><strong>{o.service}</strong></td><td style="white-space:nowrap">{o.price}</td><td class="muted small">{o.note ?? ''}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <div class="notice mt-2">
+        <p><strong>About these prices.</strong> All amounts are in South African rand and are indicative "from" prices based on a typical engagement. {site.pricesNote} Complexity, the state of your records and the volume of transactions affect the final fee, which is always confirmed in writing before work begins. Government and CIPC fees are included only where stated.</p>
+      </div>
+    </div>
+  </section>
+  <CTA title="Want an exact number?" text="Tell us about your situation and we will send a written quote within one business day." />
+</Base>
+<style>
+  .plan { position: relative; display: flex; flex-direction: column; }
+  .plan .btn { align-self: flex-start; margin-top: auto; }
+  .plan.highlight { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .plan .pill { position: absolute; top: -0.8rem; right: 1.2rem; background: var(--accent); color: var(--primary-dark); }
+  .mini h3 { font-size: 1.05rem; }
+  .small-price { font-size: 1.4rem !important; margin-bottom: 0.4rem !important; }
+  .price { font-family: var(--font-heading); font-size: 1.7rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
+  .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); display: block; font-weight: 500; }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.5rem 1rem; }
+</style>

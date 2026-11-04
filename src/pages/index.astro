@@ -1,0 +1,191 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+import Faq from '../components/Faq.astro';
+import Promises from '../components/Promises.astro';
+import Reviews from '../components/Reviews.astro';
+import { site, whatsappLink } from '../config';
+import { clientTypes, software } from '../data/services';
+import { generalFaq } from '../data/faq';
+
+const pillars = [
+  { title: 'Personal tax', text: 'ITR12 and provisional returns, SARS disputes, tax clearance, capital gains, rental, foreign and expat tax.', href: '/services/individuals', icon: 'M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.2 6.6 3.7L12 11.6 5.4 7.9 12 4.2ZM5 9.6l6 3.3v6.6l-6-3.3V9.6Zm8 9.9v-6.6l6-3.3v6.6l-6 3.3Z' },
+  { title: 'Business accounting', text: 'Bookkeeping, management accounts, annual financial statements, VAT, payroll, CIPC and company tax, on a monthly retainer.', href: '/services/businesses', icon: 'M4 20h16v-2H4v2Zm2-4h3V9H6v7Zm5 0h3V4h-3v12Zm5 0h3v-5h-3v5Z' },
+  { title: 'Independent reviews', text: 'ISRE 2400 independent reviews and compilation engagements for companies and trusts that do not need a full audit.', href: '/services/businesses#reviews', icon: 'M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z' },
+  { title: 'Your own client portal', text: 'Practice Nexus is your client portal: one secure place to upload documents and share them with us. Free with any engagement.', href: '/contact', icon: 'M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z' },
+];
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+};
+---
+<Base title={site.name} jsonLd={ld}>
+  <!-- Hero -->
+  <section class="hero section-brand">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Accounting &amp; tax, South Africa</span>
+        <h1>Accounting and tax that fills the gap between where your finances are and where they should be.</h1>
+        <p class="lede">A remote practice led by a Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA). You deal with the people who do your work, every time. Plain-English advice for individuals, companies and trusts, with free accounting software for every client.</p>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn btn-primary" href="/contact">Book a free consultation</a>
+          <a class="btn btn-outline" href={whatsappLink()} target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+        <ul class="hero-creds">
+          {site.credentials.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+      <div class="hero-panel" aria-hidden="true">
+        <div class="panel-card">
+          <div class="panel-head"><span>Compliance status</span><span class="dot"></span></div>
+          <ul class="panel-list">
+            <li><span>ITR12 personal return</span><b>Filed</b></li>
+            <li><span>IRP6 provisional (P1)</span><b>Filed</b></li>
+            <li><span>VAT201 Sep/Oct</span><b>Due 31 Oct</b></li>
+            <li><span>EMP201 October</span><b>Filed</b></li>
+            <li><span>CIPC annual return</span><b>Filed</b></li>
+          </ul>
+          <div class="panel-foot"><span>PI score</span><b>14</b><span class="panel-note">Owner-managed. No audit or review required.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Promises />
+
+  <!-- Pillars -->
+  <section class="section">
+    <div class="wrap">
+      <div class="header-row">
+        <div>
+          <span class="eyebrow">What we do</span>
+          <h2>One practice. The whole picture.</h2>
+        </div>
+        <a class="btn btn-outline btn-sm" href="/services">All services</a>
+      </div>
+      <div class="grid grid-2">
+        {pillars.map((p) => (
+          <a class="card-link" href={p.href}>
+            <div class="card pillar">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d={p.icon}/></svg></div>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+              <span class="more">Learn more</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FTG Books feature -->
+  <section class="section section-alt">
+    <div class="wrap feature-grid">
+      <div>
+        <span class="eyebrow">Included with every engagement</span>
+        <h2>FTG Books. Accounting software we built, free for our clients.</h2>
+        <p>Most small-business software stops at a trial balance and charges extra for everything else. FTG Books keeps your books clean, handles VAT, calculates your public interest score from your own data and, when you qualify, compiles annual financial statements you can file yourself.</p>
+        <ul class="check-list">
+          <li>See your books live</li>
+          <li>Upload documents through Practice Nexus, our secure client portal</li>
+          <li>Bank imports, reconciliations and invoicing</li>
+          <li>VAT201 figures and provisional tax estimates</li>
+          <li>Automatic PI score and assurance-level check</li>
+          <li>IFRS for SMEs compliant annual financial statements</li>
+          <li>Free for as long as you are an accounting or tax client</li>
+        </ul>
+        <div class="btn-row" style="margin-top:1.4rem">
+          <a class="btn btn-dark" href="/solutions/ftg-books">Explore FTG Books</a>
+          <a class="btn btn-outline" href="/tools/pi-score-calculator">Check if you qualify</a>
+        </div>
+      </div>
+      <div class="software-wall">
+        <p class="small muted" style="margin-bottom:0.8rem">We also work in the tools you already use:</p>
+        <div class="logos">
+          {software.map((s) => <span class="pill pill-outline">{s}</span>)}
+        </div>
+        <div class="quote-card">
+          <p>"If your PI score is under 100 and you own and run your company, you are allowed to compile your own financial statements. I would rather give you the tool to do that than bill you for something you do not need."</p>
+          <footer>{site.owner}, founder</footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who we help -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Who we help</span>
+      <h2>From a single IRP5 to a group of companies.</h2>
+      <div class="grid grid-3 mt-2">
+        {clientTypes.map((c) => (
+          <div class="card">
+            <h3>{c.title}</h3>
+            <p>{c.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools and FAQ -->
+  <section class="section section-alt">
+    <div class="wrap tools-faq">
+      <div>
+        <span class="eyebrow">Free tools</span>
+        <h2>Get an answer in thirty seconds.</h2>
+        <div class="stack">
+          <a class="card-link" href="/tools/income-tax-calculator"><div class="card"><h3>Income tax calculator</h3><p>Annual and monthly tax using the 2027 tax year tables, rebates and medical credits.</p></div></a>
+          <a class="card-link" href="/tools/pi-score-calculator"><div class="card"><h3>PI score calculator</h3><p>Audit, independent review, or do it yourself? Find out from your company's public interest score.</p></div></a>
+          <a class="card-link" href="/resources/tax-calendar"><div class="card"><h3>Tax calendar</h3><p>Every SARS, CIPC and payroll deadline for the year in one place.</p></div></a>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked</h2>
+        <Faq items={generalFaq.slice(0, 5)} />
+        <p style="margin-top:1.5rem"><a href="/faq">See all questions</a></p>
+      </div>
+    </div>
+  </section>
+
+  <Reviews />
+
+  <CTA />
+</Base>
+
+<style>
+  .hero { padding: clamp(3rem, 7vw, 6rem) 0; background: radial-gradient(900px 500px at 85% 10%, rgba(196,103,69,0.2), transparent 60%), var(--primary-dark); overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; }
+  .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); max-width: 20ch; }
+  .hero-creds { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; gap: 0.6rem 1.4rem; flex-wrap: wrap; font-size: 0.9rem; color: var(--sage); }
+  .hero-creds li { position: relative; padding-left: 1.1rem; margin: 0; }
+  .hero-creds li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero-panel { display: flex; justify-content: center; }
+  .panel-card { width: 100%; max-width: 380px; background: rgba(255,255,255,0.06); border: 1px solid var(--line-on-dark); border-radius: 18px; padding: 1.4rem; backdrop-filter: blur(6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6); }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 1rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #3fe07a; box-shadow: 0 0 0 4px rgba(63,224,122,0.2); }
+  .panel-list { list-style: none; padding: 0; margin: 0; }
+  .panel-list li { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--line-on-dark); font-size: 0.93rem; color: var(--on-dark); margin: 0; }
+  .panel-list b { color: #fff; font-weight: 600; }
+  .panel-foot { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; margin-top: 1rem; font-size: 0.9rem; color: var(--on-dark); align-items: center; }
+  .panel-foot b { font-family: var(--font-heading); font-weight: 800; font-size: 2rem; color: var(--sage); grid-row: span 2; }
+  .panel-note { font-size: 0.8rem; color: rgba(191,207,200,0.7); }
+  .tools-faq { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: start; }
+  .tools-faq .card h3 { font-size: 1.1rem; margin: 0 0 0.3rem; }
+  .tools-faq .card p { font-size: 0.95rem; margin: 0; }
+  .pillar { display: flex; flex-direction: column; }
+  .pillar .more { margin-top: auto; padding-top: 0.8rem; font-weight: 700; color: var(--accent-dark); font-size: 0.9rem; }
+  .feature-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  .logos { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 1.5rem; }
+  .quote-card { background: var(--primary-dark); color: var(--on-dark); border-radius: var(--radius); padding: 1.6rem; font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; line-height: 1.55; }
+  .quote-card p { margin: 0 0 1rem; }
+  .quote-card footer { font-family: var(--font-body); font-size: 0.85rem; color: var(--sage); }
+  @media (max-width: 900px) {
+    .hero-grid, .feature-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .tools-faq { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>

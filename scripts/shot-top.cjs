@@ -1,0 +1,25 @@
+const { chromium } = require('playwright'); const path = require('path'); const { spawn } = require('child_process');
+(async () => {
+  const server = spawn('npx', ['astro', 'preview', '--port', '4321'], { cwd: path.resolve(__dirname, '..'), stdio: 'ignore' });
+  await new Promise((r) => setTimeout(r, 4000));
+  const browser = await chromium.launch();
+  const out = process.argv[2];
+  let ctx = await browser.newContext({ viewport: { width: 1366, height: 800 } });
+  let page = await ctx.newPage();
+  await page.goto('http://localhost:4321/', { waitUntil: 'networkidle' });
+  await page.screenshot({ path: out + '/top-light.png' });
+  await page.hover('text=Solutions');
+  await page.screenshot({ path: out + '/top-hover.png' });
+  await ctx.close();
+  ctx = await browser.newContext({ viewport: { width: 1366, height: 800 }, colorScheme: 'dark' });
+  page = await ctx.newPage();
+  await page.goto('http://localhost:4321/services/businesses', { waitUntil: 'networkidle' });
+  await page.screenshot({ path: out + '/dark.png', fullPage: true });
+  await ctx.close();
+  ctx = await browser.newContext({ viewport: { width: 390, height: 800 } });
+  page = await ctx.newPage();
+  await page.goto('http://localhost:4321/', { waitUntil: 'networkidle' });
+  await page.click('.menu-toggle');
+  await page.screenshot({ path: out + '/mobile-menu.png' });
+  await browser.close(); server.kill();
+})();

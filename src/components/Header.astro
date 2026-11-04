@@ -1,0 +1,84 @@
+---
+import Logo from './Logo.astro';
+import { nav, whatsappLink } from '../config';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+---
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label="Filling the GAAP home"><Logo size={40} /></a>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        {nav.map((item) => (
+          <li class:list={['nav-item', { 'has-children': !!item.children }]}>
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+            {item.children && (
+              <ul class="dropdown">
+                {item.children.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="actions">
+      <a class="btn btn-whatsapp btn-sm hide-sm" href={whatsappLink()} target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn-primary btn-sm" href="/contact">Book a consultation</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" hidden>
+    <div class="wrap">
+      {nav.map((item) => (
+        <div class="m-group">
+          <a href={item.href} class="m-top">{item.label}</a>
+          {item.children && item.children.map((c) => <a href={c.href} class="m-sub">{c.label}</a>)}
+        </div>
+      ))}
+      <div class="btn-row" style="margin-top:1rem">
+        <a class="btn btn-whatsapp btn-sm" href={whatsappLink()} target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-primary btn-sm" href="/contact">Book a consultation</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 72px; }
+  .brand { text-decoration: none; }
+  .main-nav > ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.25rem; }
+  .main-nav li { margin: 0; position: relative; }
+  .main-nav a { display: block; padding: 0.55rem 0.8rem; text-decoration: none; color: var(--heading); font-weight: 600; font-size: 0.95rem; border-radius: 8px; }
+  .main-nav a:hover, .main-nav a[aria-current="page"] { background: var(--soft); color: var(--link); }
+  .main-nav .dropdown { list-style: none; margin: 0; position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); padding: 0.4rem; display: none; flex-direction: column; gap: 0; }
+  .dropdown li { margin: 0; }
+  .dropdown a { font-weight: 500; }
+  .has-children:hover .dropdown, .has-children:focus-within .dropdown { display: flex; }
+  .actions { display: flex; align-items: center; gap: 0.6rem; }
+  .menu-toggle { display: none; width: 44px; height: 44px; background: transparent; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
+  .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--heading); border-radius: 2px; }
+  .mobile-nav { border-top: 1px solid var(--border); background: var(--surface); padding: 1rem 0 1.5rem; }
+  .m-group { padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+  .m-top { display: block; font-weight: 700; color: var(--heading); text-decoration: none; padding: 0.5rem 0; }
+  .m-sub { display: block; color: var(--muted); text-decoration: none; padding: 0.3rem 0 0.3rem 1rem; font-size: 0.95rem; }
+  @media (max-width: 1000px) {
+    .main-nav { display: none; }
+    .menu-toggle { display: flex; }
+    .hide-sm { display: none; }
+  }
+  @media (max-width: 480px) {
+    .actions .btn-primary { display: none; }
+  }
+</style>
+<script>
+  const btn = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('mobile-nav');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    if (nav) nav.hidden = open;
+  });
+</script>

@@ -1,0 +1,165 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { taxYears } from '../../data/tax-tables';
+import { site } from '../../config';
+const years = Object.keys(taxYears).map(Number).sort((a, b) => b - a);
+const def = taxYears[site.defaultTaxYear];
+---
+<Base title="South African income tax calculator" description={`Free SARS income tax calculator for the ${def.label}. Estimate your annual and monthly tax, effective and marginal rate, with rebates, medical credits and retirement annuity deductions.`}>
+  <PageHero eyebrow="Income tax calculator" title="How much tax will you pay?" lede="Enter your annual taxable income and a few details. The calculator applies the SARS tables, age rebates, medical scheme fees tax credits and the retirement contribution deduction." />
+  <section class="section-tight">
+    <div class="wrap calc-grid">
+      <form class="card" id="tax-form" novalidate>
+        <div class="field">
+          <label for="year">Tax year</label>
+          <select id="year" name="year">
+            {years.map((y) => <option value={y} selected={y === site.defaultTaxYear}>{taxYears[y].label} ({taxYears[y].period})</option>)}
+          </select>
+        </div>
+        <div class="field">
+          <label for="income">Annual taxable income (R)</label>
+          <input type="number" id="income" name="income" inputmode="numeric" min="0" step="1000" placeholder="e.g. 480000" />
+          <span class="hint">Gross salary before PAYE, plus any other taxable income. Toggle to monthly below if easier.</span>
+          <div class="radio-row" style="margin-top:0.4rem">
+            <label><input type="radio" name="period" value="annual" checked /> Annual</label>
+            <label><input type="radio" name="period" value="monthly" /> Monthly</label>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="age">Your age at end of tax year</label>
+            <select id="age" name="age">
+              <option value="30">Under 65</option>
+              <option value="65">65 to 74</option>
+              <option value="75">75 and over</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="medical">Medical scheme members</label>
+            <input type="number" id="medical" name="medical" min="0" max="20" value="0" inputmode="numeric" />
+            <span class="hint">Yourself plus dependants. 0 if none.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ra">Annual retirement contributions (R)</label>
+          <input type="number" id="ra" name="ra" min="0" step="1000" value="0" inputmode="numeric" />
+          <span class="hint">Pension, provident and retirement annuity contributions. Deductible up to 27.5% of income, capped at R350,000.</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+
+      <div class="result" id="result" aria-live="polite">
+        <span class="eyebrow">Your estimate</span>
+        <div class="big" id="r-net">R0</div>
+        <p class="muted small" id="r-sub">Annual tax after rebates and credits</p>
+        <dl>
+          <dt>Monthly tax</dt><dd id="r-monthly">R0</dd>
+          <dt>Taxable income after retirement deduction</dt><dd id="r-income">R0</dd>
+          <dt>Tax per tables</dt><dd id="r-gross">R0</dd>
+          <dt>Less rebates</dt><dd id="r-rebates">R0</dd>
+          <dt>Less medical tax credits</dt><dd id="r-medical">R0</dd>
+          <dt>Effective rate</dt><dd id="r-eff">0%</dd>
+          <dt>Marginal rate</dt><dd id="r-marg">0%</dd>
+          <dt>Take-home per month (before UIF)</dt><dd id="r-takehome">R0</dd>
+        </dl>
+        <p class="small muted" id="r-note" style="margin-top:1rem"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap narrow">
+      <h2>{def.label} tax tables</h2>
+      <p class="muted">{def.period}. {def.notes} Switch the tax year in the calculator to compare with the previous year.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Taxable income (R)</th><th>Rate of tax</th></tr></thead>
+          <tbody>
+            {def.brackets.map((b) => <tr><td>{b.upTo === null ? `${b.from.toLocaleString('en-ZA')} and above` : `${b.from.toLocaleString('en-ZA')} to ${b.upTo.toLocaleString('en-ZA')}`}</td><td>{b.base > 0 ? `R${b.base.toLocaleString('en-ZA')} + ` : ''}{Math.round(b.rate * 100)}% of taxable income{b.base > 0 ? ` above R${(b.from - 1).toLocaleString('en-ZA')}` : ''}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <div class="grid grid-2 mt-2">
+        <div class="card">
+          <h3 style="font-size:1.1rem">Rebates</h3>
+          <dl class="mini"><dt>Primary (everyone)</dt><dd>R{def.rebates.primary.toLocaleString('en-ZA')}</dd><dt>Secondary (65 and older)</dt><dd>R{def.rebates.secondary.toLocaleString('en-ZA')}</dd><dt>Tertiary (75 and older)</dt><dd>R{def.rebates.tertiary.toLocaleString('en-ZA')}</dd></dl>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.1rem">Tax thresholds</h3>
+          <dl class="mini"><dt>Under 65</dt><dd>R{def.thresholds.under65.toLocaleString('en-ZA')}</dd><dt>65 to 74</dt><dd>R{def.thresholds.from65.toLocaleString('en-ZA')}</dd><dt>75 and older</dt><dd>R{def.thresholds.from75.toLocaleString('en-ZA')}</dd></dl>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.1rem">Medical scheme fees tax credit (per month)</h3>
+          <dl class="mini"><dt>Main member and first dependant, each</dt><dd>R{def.medicalCredit.firstTwo}</dd><dt>Each additional dependant</dt><dd>R{def.medicalCredit.additional}</dd></dl>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.1rem">Interest exemption</h3>
+          <dl class="mini"><dt>Under 65</dt><dd>R{def.interestExemption.under65.toLocaleString('en-ZA')}</dd><dt>65 and older</dt><dd>R{def.interestExemption.from65.toLocaleString('en-ZA')}</dd></dl>
+        </div>
+      </div>
+      <p class="small muted" style="margin-top:1.5rem">This calculator estimates normal tax on taxable income for an individual. It does not account for travel allowances, fringe benefits, capital gains inclusion, additional medical expense credits, foreign tax credits or other adjustments. Always check the tables against the latest SARS publication for your tax year.</p>
+    </div>
+  </section>
+  <CTA title="Want to pay less, legally?" text="A short review of your retirement, medical and income structure often finds savings. Book a free consultation." />
+</Base>
+
+<script define:vars={{ taxYears }}>
+  const form = document.getElementById('tax-form');
+  const $ = (id) => document.getElementById(id);
+  const R = (n) => 'R' + Math.round(n).toLocaleString('en-ZA');
+  const pct = (n) => (n * 100).toFixed(1) + '%';
+
+  function calc() {
+    const year = taxYears[$('year').value];
+    let income = Number($('income').value) || 0;
+    const period = form.querySelector('input[name="period"]:checked').value;
+    if (period === 'monthly') income *= 12;
+    const age = Number($('age').value);
+    const medical = Number($('medical').value) || 0;
+    // This field is always annual: the Annual/Monthly toggle applies to income only.
+    const ra = Number($('ra').value) || 0;
+
+    const raCap = Math.min(income * 0.275, 350000);
+    const raDed = Math.min(ra, raCap);
+    const ti = Math.max(0, income - raDed);
+    let gross = 0, marginal = 0;
+    for (const b of year.brackets) {
+      if (b.upTo === null || ti <= b.upTo) { gross = b.base + (ti - (b.from === 0 ? 0 : b.from - 1)) * b.rate; marginal = b.rate; break; }
+    }
+    let rebates = year.rebates.primary;
+    if (age >= 65) rebates += year.rebates.secondary;
+    if (age >= 75) rebates += year.rebates.tertiary;
+    const med = medical <= 0 ? 0 : 12 * (Math.min(medical, 2) * year.medicalCredit.firstTwo + Math.max(0, medical - 2) * year.medicalCredit.additional);
+    const net = Math.max(0, gross - rebates - med);
+    const eff = ti > 0 ? net / ti : 0;
+
+    $('r-net').textContent = R(net);
+    $('r-monthly').textContent = R(net / 12);
+    $('r-income').textContent = R(ti);
+    $('r-gross').textContent = R(gross);
+    $('r-rebates').textContent = '− ' + R(Math.min(rebates, gross));
+    $('r-medical').textContent = '− ' + R(Math.min(med, Math.max(0, gross - rebates)));
+    $('r-eff').textContent = pct(eff);
+    $('r-marg').textContent = ti > 0 ? pct(marginal) : '0%';
+    // Uses the full contribution, not raDed: amounts above the deduction cap still leave the pay packet.
+    $('r-takehome').textContent = R(Math.max(0, income - ra - net) / 12);
+    const threshold = age >= 75 ? year.thresholds.from75 : age >= 65 ? year.thresholds.from65 : year.thresholds.under65;
+    $('r-note').textContent = ti > 0 && ti <= threshold
+      ? `Your taxable income is below the ${year.label} tax threshold of ${R(threshold)} for your age group, so no tax is payable.`
+      : raDed > 0 ? `Includes a retirement contribution deduction of ${R(raDed)}${raDed < ra ? ' (capped)' : ''}.` : '';
+  }
+  form.addEventListener('submit', (e) => { e.preventDefault(); calc(); });
+  form.addEventListener('input', calc);
+  calc();
+</script>
+<style>
+  .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: start; }
+  .result { position: sticky; top: 90px; }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.5rem 1rem; }
+  dl.mini { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 1rem; margin: 0; font-size: 0.95rem; }
+  dl.mini dt { color: var(--muted); }
+  dl.mini dd { margin: 0; font-weight: 700; color: var(--heading); text-align: right; }
+  @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } .result { position: static; } }
+</style>

@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import Faq from '../../components/Faq.astro';
+import ServiceGroups from '../../components/ServiceGroups.astro';
+import { individualGroups } from '../../data/services';
+import { individualFaq } from '../../data/faq';
+import { personalPlans } from '../../data/pricing';
+import { site } from '../../config';
+---
+<Base title="Tax services for individuals" description="Personal income tax returns, provisional tax, SARS disputes, tax clearance, capital gains, rental, foreign income and expat tax from a registered Professional Tax Practitioner (SA).">
+  <PageHero eyebrow="For individuals" title="Personal tax, handled properly." lede="Whether you have one IRP5 or a portfolio of properties and foreign income, we make sure your return is right, your deductions are claimed and SARS is dealt with on your behalf.">
+    <div class="btn-row" style="margin-top:1.2rem">
+      <a class="btn btn-primary" href="/contact">Book a free consultation</a>
+      <a class="btn btn-outline" href="/pricing#personal">Personal tax pricing</a>
+    </div>
+  </PageHero>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <ServiceGroups groups={individualGroups} />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <span class="eyebrow">Pricing</span>
+      <h2>Three ways to work together.</h2>
+      <div class="grid grid-3 mt-2">
+        {personalPlans.map((p) => (
+          <div class:list={['card plan', { highlight: p.highlight }]}>
+            <h3>{p.name}</h3>
+            <div class="price">from {p.price} <small>{p.period}</small></div>
+            <p class="muted">{p.tagline}</p>
+            <ul class="check-list small">{p.features.map((f) => <li>{f}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p class="small muted" style="margin-top:1.2rem">Indicative prices. {site.pricesNote} Your exact fee is confirmed in writing after a free consultation. <a href="/pricing">Full pricing</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <span class="eyebrow">Questions</span>
+      <h2>Personal tax FAQ</h2>
+      <Faq items={individualFaq} withSchema />
+    </div>
+  </section>
+  <CTA title="Not sure what you need?" text="Send us your situation on WhatsApp or book a call. If it is simple enough to do yourself, we will tell you." />
+</Base>
+<style>
+  .plan.highlight { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .price { font-family: var(--font-heading); font-size: 1.8rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
+  .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); display: block; font-weight: 500; }
+</style>

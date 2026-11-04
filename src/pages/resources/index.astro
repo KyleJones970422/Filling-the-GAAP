@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title="Resources" description="Plain-English guides on South African personal tax, business compliance, the Companies Act and accounting software, plus the annual tax calendar.">
+  <PageHero eyebrow="Resources" title="Guides, deadlines and straight answers." lede="Everything we find ourselves explaining more than twice gets written down here." />
+  <section class="section-tight">
+    <div class="wrap grid grid-3">
+      <a class="card-link" href="/resources/tax-calendar"><div class="card feature-card"><span class="eyebrow">Reference</span><h3>Tax calendar</h3><p>Every SARS, CIPC and payroll deadline for the year, monthly and annual.</p></div></a>
+      <a class="card-link" href="/tools/income-tax-calculator"><div class="card feature-card"><span class="eyebrow">Tool</span><h3>Income tax calculator</h3><p>Estimate your annual and monthly tax with the current SARS tables.</p></div></a>
+      <a class="card-link" href="/tools/pi-score-calculator"><div class="card feature-card"><span class="eyebrow">Tool</span><h3>PI score calculator</h3><p>Audit, independent review or neither? Find out in thirty seconds.</p></div></a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>Articles</h2>
+      <div class="grid grid-2 mt-2">
+        {posts.map((p) => (
+          <a class="card-link" href={`/resources/${p.id}`}>
+            <article class="card post">
+              <div class="meta"><span class="pill">{p.data.category}</span><time datetime={p.data.date.toISOString()}>{fmt(p.data.date)}</time></div>
+              <h3>{p.data.title}</h3>
+              <p class="muted">{p.data.description}</p>
+              <span class="more">Read article</span>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CTA />
+</Base>
+<style>
+  .feature-card { background: var(--soft); border-color: transparent; }
+  .post { display: flex; flex-direction: column; }
+  .meta { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .meta .pill { margin: 0; }
+  .more { margin-top: auto; padding-top: 0.8rem; font-weight: 700; color: var(--accent-dark); font-size: 0.9rem; }
+</style>

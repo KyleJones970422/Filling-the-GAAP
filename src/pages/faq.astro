@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CTA from '../components/CTA.astro';
+import Faq from '../components/Faq.astro';
+import { generalFaq, individualFaq, businessFaq } from '../data/faq';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [...generalFaq, ...individualFaq, ...businessFaq].map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
+};
+---
+<Base title="Frequently asked questions" description="Answers to common questions about working with Filling the GAAP: fees, designations, remote service, FTG Books, tax returns, provisional tax, VAT, audits and independent reviews.">
+  <PageHero eyebrow="FAQ" title="Questions people ask before they call." lede="If yours is not here, WhatsApp us. We answer quickly and honestly." />
+  <section class="section-tight">
+    <div class="wrap narrow stack" style="--gap:3rem">
+      <div><h2>Working together</h2><Faq items={generalFaq} /></div>
+      <div style="margin-top:3rem"><h2>Personal tax</h2><Faq items={individualFaq} /></div>
+      <div style="margin-top:3rem"><h2>Business, companies and trusts</h2><Faq items={businessFaq} /></div>
+    </div>
+  </section>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <CTA />
+</Base>

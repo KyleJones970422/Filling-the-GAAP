@@ -1,0 +1,72 @@
+---
+import Logo from './Logo.astro';
+import { site, whatsappLink } from '../config';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <Logo variant="light" size={44} />
+        <p class="foot-blurb">{site.tagline}</p>
+        <div class="creds">
+          {site.credentials.map((c) => <span class="pill pill-outline cred">{c}</span>)}
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/individuals">For individuals</a></li>
+          <li><a href="/services/businesses">For businesses</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/solutions/ftg-books">FTG Books</a></li>
+          <li><a href="/tools">Free tools</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a></li>
+          <li><a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp</a></li>
+          <li class="muted-light">{site.hours}</li>
+          <li class="muted-light">{site.location}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <p class="foot-links">
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms of use</a>
+        <a href="/resources">Resources</a>
+        <a href="/about">About</a>
+      </p>
+    </div>
+    <p class="disclaimer">Information on this website is general in nature and does not constitute tax, accounting or legal advice. Please book a consultation for advice specific to your circumstances.</p>
+  </div>
+</footer>
+<style>
+  .site-footer { background: var(--primary-dark); color: var(--on-dark); padding: 3.5rem 0 2rem; margin-top: 0; }
+  .foot-grid { display: grid; gap: 2rem; grid-template-columns: 2fr 1fr 1fr 1.3fr; }
+  .foot-blurb { margin: 1rem 0; max-width: 34em; color: var(--on-dark); }
+  .cred { border-color: var(--line-on-dark); color: var(--sage); background: transparent; }
+  h4 { color: #fff; margin-bottom: 0.8rem; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 0.5rem; }
+  a { color: var(--on-dark); text-decoration: none; }
+  a:hover { color: var(--sage); }
+  .muted-light { color: rgba(191,207,200,0.7); font-size: 0.92rem; }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--line-on-dark); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.9rem; }
+  .foot-bottom p { margin: 0; }
+  .foot-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .disclaimer { font-size: 0.8rem; color: rgba(191,207,200,0.6); margin: 1.2rem 0 0; max-width: 70em; }
+  @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .foot-grid { grid-template-columns: 1fr; } }
+</style>

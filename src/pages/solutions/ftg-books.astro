@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  { title: 'Bank imports and reconciliation', text: 'Import statements from any South African bank, match transactions with rules, and reconcile in minutes rather than hours.' },
+  { title: 'Invoicing and quotes', text: 'Branded quotes and invoices, recurring billing, customer statements and automatic payment reminders.' },
+  { title: 'VAT that adds up', text: 'VAT201 figures by tax period, input and output reconciliation, and a clear audit trail for SARS verifications.' },
+  { title: 'Provisional tax estimates', text: 'A running estimate of taxable income and the next IRP6 payment so August and February never come as a shock.' },
+  { title: 'Automatic PI score', text: 'Your public interest score is calculated from your own employee, turnover, liability and shareholder data, with the assurance requirement spelled out.' },
+  { title: 'Annual financial statements', text: 'When you qualify, compile IFRS for SMEs compliant statements straight from your trial balance, ready for board approval and CIPC filing.' },
+  { title: 'Document vault', text: 'Attach source documents to transactions and keep the five-year record SARS requires in one place.' },
+  { title: 'Accountant access', text: 'Invite your accountant with role-based access. We see your books in real time, which is why we can offer it free to our clients.' },
+];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'FTG Books',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'ZAR', description: 'Free for Filling the GAAP accounting and tax clients' },
+  publisher: { '@type': 'Organization', name: 'Filling the GAAP' },
+};
+---
+<Base title="FTG Books accounting software" description="FTG Books is cloud accounting software built for South African small businesses: bank imports, VAT, provisional tax estimates, automatic PI score and IFRS for SMEs annual financial statements. Free for Filling the GAAP clients." jsonLd={ld}>
+  <PageHero brand eyebrow="FTG Books" title="Accounting software that does the whole job, not just the trial balance." lede="Built by a Professional Accountant (SA) for South African small businesses. Free for every Filling the GAAP accounting or tax client.">
+    <div class="btn-row" style="margin-top:1.4rem">
+      <a class="btn btn-primary" href="/contact?topic=ftg-books">Request a demo</a>
+      <a class="btn btn-outline" href="#pricing">Pricing</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Why it exists</span>
+      <h2>The gap in small-business software.</h2>
+      <div class="grid grid-2">
+        <p class="lede">Most accounting software is built for a global market and then localised with a VAT rate. It stops at a trial balance, and anything South African, such as provisional tax, a public interest score or a set of IFRS for SMEs statements, is either missing or an extra you pay an accountant for.</p>
+        <p class="lede">FTG Books starts from the compliance an owner-managed South African company actually faces and works backwards. If the law says you may compile your own financial statements, the software should let you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <span class="eyebrow">Features</span>
+      <h2>Everything a small business needs. Nothing it doesn't.</h2>
+      <div class="grid grid-4 mt-2">
+        {features.map((f) => <div class="card"><h3 style="font-size:1.15rem">{f.title}</h3><p class="small">{f.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap screens">
+      <div class="screen-placeholder" aria-label="Product screenshots coming soon">
+        <div class="screen">
+          <div class="s-top"><span></span><span></span><span></span></div>
+          <div class="s-body">
+            <div class="s-side"></div>
+            <div class="s-main">
+              <div class="s-row wide"></div>
+              <div class="s-cards"><div></div><div></div><div></div></div>
+              <div class="s-row"></div><div class="s-row"></div><div class="s-row short"></div>
+            </div>
+          </div>
+        </div>
+        <p class="small muted center" style="margin-top:0.8rem">Product screenshots coming soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="pricing">
+    <div class="wrap">
+      <span class="eyebrow">Pricing</span>
+      <h2>Free for clients. Fair for everyone else.</h2>
+      <div class="grid grid-2 mt-2">
+        <div class="card plan highlight">
+          <span class="pill">Included</span>
+          <h3>Filling the GAAP clients</h3>
+          <div class="price">R0 <small>for as long as you are a client</small></div>
+          <p class="muted">Every accounting or tax engagement includes a full FTG Books subscription with unlimited transactions and users.</p>
+          <a class="btn btn-dark btn-sm" href="/contact">Become a client</a>
+        </div>
+        <div class="card plan">
+          <h3>Everyone else</h3>
+          <div class="price">Pricing to be announced <small>per company per month</small></div>
+          <p class="muted">Use FTG Books on its own with full access to every feature, including AFS compilation. Plan details will be published here shortly.</p>
+          <a class="btn btn-outline btn-sm" href="/contact?topic=ftg-books">Join the waiting list</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <CTA title="See FTG Books on your own numbers." text="Book a 30-minute demo. Bring a bank statement and we will have your first month reconciled before the call ends." />
+</Base>
+<style>
+  .plan { position: relative; }
+  .plan.highlight { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .plan .pill { position: absolute; top: -0.8rem; right: 1.2rem; background: var(--accent); color: var(--primary-dark); }
+  .price { font-family: var(--font-heading); font-size: 1.7rem; color: var(--heading); margin: 0.2rem 0 0.6rem; }
+  .price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); display: block; }
+  .screen { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; max-width: 900px; margin: 0 auto; }
+  .s-top { display: flex; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+  .s-top span { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+  .s-body { display: grid; grid-template-columns: 160px 1fr; min-height: 320px; }
+  .s-side { background: var(--primary-dark); }
+  .s-main { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .s-row { height: 14px; border-radius: 4px; background: var(--border); width: 70%; }
+  .s-row.wide { width: 40%; height: 22px; background: var(--soft); }
+  .s-row.short { width: 45%; }
+  .s-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .s-cards div { height: 70px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); }
+  .s-cards div:first-child { background: var(--accent-soft); }
+  @media (max-width: 600px) { .s-body { grid-template-columns: 1fr; } .s-side { height: 36px; } }
+</style>

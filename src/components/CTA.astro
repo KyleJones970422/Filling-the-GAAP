@@ -1,0 +1,22 @@
+---
+import { whatsappLink } from '../config';
+interface Props { title?: string; text?: string; }
+const {
+  title = 'Ready to close the gap?',
+  text = 'Book a free, no-obligation consultation. We will talk through where you are, what you need, and where we can add value.',
+} = Astro.props;
+---
+<section class="section section-brand cta">
+  <div class="wrap center">
+    <span class="eyebrow">Let's talk</span>
+    <h2>{title}</h2>
+    <p class="lede mx-auto">{text}</p>
+    <div class="btn-row" style="justify-content:center; margin-top:1.5rem">
+      <a class="btn btn-primary" href="/contact">Book a free consultation</a>
+      <a class="btn btn-outline" href={whatsappLink()} target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+<style>
+  .cta { background: radial-gradient(1200px 400px at 50% 120%, rgba(196,103,69,0.22), transparent 70%), var(--primary-dark); }
+</style>

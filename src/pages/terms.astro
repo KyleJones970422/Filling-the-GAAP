@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../config';
+---
+<Base title="Terms of use" description="Terms governing the use of the Filling the GAAP website, its free tools and content.">
+  <PageHero eyebrow="Legal" title="Terms of use" lede="The rules for using this website, its calculators and its content." />
+  <section class="section-tight">
+    <div class="wrap narrow prose">
+      <p class="small muted">Last updated: 30 October 2026</p>
+      <h2>General information, not advice</h2>
+      <p>The content on this website, including articles, the tax calendar and the calculators, is general information provided for convenience. It is not tax, accounting, legal or financial advice and does not create a professional relationship between you and {site.name}. Tax law and the practice of SARS and CIPC change frequently. Always confirm the position for your own circumstances, or engage us formally, before acting.</p>
+      <h2>Calculators and tools</h2>
+      <p>The income tax calculator and public interest score calculator use published SARS tables and the Companies Regulations as we understand them at the date shown. They make simplifying assumptions, do not cover every situation and may contain errors. Results are estimates only. Nothing you enter into the tools is transmitted to or stored by us; calculations run in your browser.</p>
+      <h2>Engagements</h2>
+      <p>Professional services are provided only under a signed engagement letter, which sets out the scope, fees and terms of that engagement and takes precedence over these website terms. Prices on this website are indicative starting points and are not offers capable of acceptance.</p>
+      <h2>Software products</h2>
+      <p>Use of FTG Books is governed by its own subscription terms, provided when you sign up or request access.</p>
+      <h2>Intellectual property</h2>
+      <p>All content, design, logos and code on this website belong to {site.name} unless otherwise stated. You may share links to articles and quote short extracts with attribution. You may not reproduce substantial parts of the site without permission.</p>
+      <h2>Third-party links</h2>
+      <p>Links to SARS, CIPC and other third-party websites are provided for convenience. We are not responsible for their content or availability.</p>
+      <h2>Liability</h2>
+      <p>To the extent permitted by law, {site.name} is not liable for any loss arising from reliance on information or tools on this website. This does not limit liability under a signed engagement letter.</p>
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of the Republic of South Africa.</p>
+      <h2>Contact</h2>
+      <p>Questions about these terms: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</Base>
