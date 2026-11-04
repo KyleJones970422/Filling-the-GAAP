@@ -7,7 +7,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, 
 const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <Base title="Resources" description="Plain-English guides on South African personal tax, business compliance, the Companies Act and accounting software, plus the annual tax calendar.">
-  <PageHero eyebrow="Resources" title="Guides, deadlines and straight answers." lede="Everything I find myself explaining more than twice gets written down here." />
+  <PageHero eyebrow="Resources" title="Guides, deadlines and straight answers." lede="Everything we find ourselves explaining more than twice gets written down here." />
   <section class="section-tight">
     <div class="wrap grid grid-3">
       <a class="card-link" href="/resources/tax-calendar"><div class="card feature-card"><span class="eyebrow">Reference</span><h3>Tax calendar</h3><p>Every SARS, CIPC and payroll deadline for the year, monthly and annual.</p></div></a>

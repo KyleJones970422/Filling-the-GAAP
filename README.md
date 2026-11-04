@@ -20,7 +20,7 @@ Node 22 is required.
 | What | Where |
 | --- | --- |
 | Phone, email, hours, booking link, social links, credentials | `src/config.ts` |
-| Registration numbers (SAIPA, SARS), headshot path, Google reviews link, testimonials, the four promises, VAT note under prices | `src/config.ts` |
+| Team members and photos, Google reviews link, testimonials, the four promises, VAT note under prices | `src/config.ts` |
 | Navigation menu | `src/config.ts` (`nav`) |
 | Service lists and client types | `src/data/services.ts` |
 | Prices and packages | `src/data/pricing.ts` |
@@ -51,8 +51,7 @@ Your content in Markdown.
 
 ### Things to fill in before launch
 
-- `registrations.saipa` and `registrations.sarsPractitioner` in `src/config.ts`: shown on the About page and footer so prospects can verify you. Hidden while empty.
-- `headshot`: drop a photo into `public/` (e.g. `public/kyle.jpg`) and set `headshot: '/kyle.jpg'`. Initials show until then.
+- `team` in `src/config.ts`: name, role, credentials, bio and photo for each person on the About page. Drop photos into `public/` (e.g. `public/kyle.jpg`) and set `photo: '/kyle.jpg'`. Initials show until then.
 - `reviews` and `googleReviewsUrl`: add testimonials as `{ quote, name, role, rating }`. The section appears on the home page once there is at least one.
 - `pricesNote`: currently "Prices exclude VAT where applicable." Change it if you are not VAT registered.
 

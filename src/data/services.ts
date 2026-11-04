@@ -13,7 +13,7 @@ export const individualGroups: ServiceGroup[] = [
   },
   {
     title: 'SARS problems',
-    intro: 'When SARS is the problem, I deal with SARS so you do not have to.',
+    intro: 'When SARS is the problem, we deal with SARS so you do not have to.',
     services: [
       { title: 'SARS eFiling registration and profile help', blurb: 'Getting registered, recovering access, fixing profile and banking detail issues, and sorting out registered representative problems.' },
       { title: 'Tax clearance and compliance status', blurb: 'Tax Compliance Status (TCS) PINs for tenders, emigration, foreign investment allowance and good standing, with the underlying compliance issues resolved first.' },
@@ -81,7 +81,7 @@ export const businessGroups: ServiceGroup[] = [
     intro: 'Annual financial statements that meet the Companies Act, and only as much assurance as the law requires.',
     services: [
       { title: 'Annual financial statements', blurb: 'IFRS for SMEs or IFRS compliant AFS, compiled independently so you meet Companies Act requirements and lender expectations.' },
-      { title: 'Independent reviews and compilations', blurb: 'As an Independent Reviewer (SA), I perform ISRE 2400 independent reviews for companies that do not require an audit, and compilation engagements under ISRS 4410.' },
+      { title: 'Independent reviews and compilations', blurb: 'Our Independent Reviewer (SA) performs ISRE 2400 independent reviews for companies that do not require an audit, and compilation engagements under ISRS 4410.' },
     ],
   },
   {
@@ -108,13 +108,13 @@ export const clientTypes = [
 export const steps = [
   { n: '01', title: 'Free consultation', text: 'A 30-minute call to understand your situation, your deadlines and what is keeping you up at night.' },
   { n: '02', title: 'Clear fixed quote', text: 'You get a written scope and price. No hourly billing, no surprises, and no work starts until you say go.' },
-  { n: '03', title: 'Onboarding and clean-up', text: 'I collect your records, take over SARS and CIPC access, set up FTG Books and bring everything current.' },
+  { n: '03', title: 'Onboarding and clean-up', text: 'We collect your records, take over SARS and CIPC access, set up FTG Books and bring everything current.' },
   { n: '04', title: 'Ongoing, proactive care', text: 'Deadlines tracked, returns filed, questions answered on WhatsApp, and a real conversation about the numbers.' },
 ];
 
 export const switching = [
-  { title: 'Professional clearance', text: 'I write to your current accountant for clearance and your records. You do not need to have an awkward conversation.' },
-  { title: 'SARS and CIPC access', text: 'You sign a power of attorney and I take over your eFiling profile and CIPC customer code.' },
+  { title: 'Professional clearance', text: 'We write to your current accountant for clearance and your records. You do not need to have an awkward conversation.' },
+  { title: 'SARS and CIPC access', text: 'You sign a power of attorney and we take over your eFiling profile and CIPC customer code.' },
   { title: 'Records and catch-up', text: 'Your accounting file, prior financial statements and tax returns move across. Any backlog is brought current.' },
   { title: 'Steady state', text: 'From the next month-end you are on the normal rhythm: books done, returns filed, deadlines tracked.' },
 ];

@@ -42,7 +42,7 @@ export const businessPlans: Plan[] = [
     name: 'Compliance',
     price: 'R1,450',
     period: 'per month',
-    tagline: 'Turnover under R1 million. You keep your own books in FTG Books; I handle every filing.',
+    tagline: 'Turnover under R1 million. You keep your own books in FTG Books; we handle every filing.',
     features: ['Annual financial statements', 'Company income tax return (ITR14)', 'Provisional tax (IRP6), twice a year', 'CIPC annual return and beneficial ownership filing', 'Quarterly check of your books', 'Free FTG Books subscription'],
   },
   {

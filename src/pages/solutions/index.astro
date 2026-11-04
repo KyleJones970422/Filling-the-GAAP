@@ -6,11 +6,10 @@ import CTA from '../../components/CTA.astro';
 const products = [
   { name: 'FTG Books', for: 'Small businesses and their accountants', status: 'Live', href: '/solutions/ftg-books', text: 'Cloud accounting built around South African compliance: bank imports, VAT, provisional tax estimates, an automatic PI score, and IFRS for SMEs annual financial statements you can compile yourself when you qualify.', price: 'Free for clients. Paid plans for everyone else.' },
   { name: 'FTG Review', for: 'Accounting practices and independent reviewers', status: 'Live', href: '/solutions/ftg-review', text: 'An end-to-end workspace for ISRE 2400 independent review engagements: acceptance, planning, analytical procedures, enquiries, documentation and the review report, with the file always ready for inspection.', price: 'Per-practice subscription.' },
-  { name: 'Custom development', for: 'Businesses with a workflow problem', status: 'By engagement', href: '/solutions/custom-development', text: 'If your business runs on spreadsheets and WhatsApp, I can design and build the tool that replaces them, with the financial controls built in from the start.', price: 'Fixed-price quote.' },
 ];
 ---
-<Base title="Solutions" description="Software built by an accountant for South African businesses and accounting practices: FTG Books accounting software, FTG Review for independent review engagements, and custom development.">
-  <PageHero eyebrow="Solutions" title="Software built by an accountant who felt the gaps." lede="I build tools for the parts of accounting and compliance that should be simpler and cheaper than they are. Two products, plus custom builds for businesses that need something specific." />
+<Base title="Solutions" description="Software built by an accountant for South African businesses and accounting practices: FTG Books accounting software and FTG Review for independent review engagements.">
+  <PageHero eyebrow="Solutions" title="Software built by an accountant who felt the gaps." lede="We build tools for the parts of accounting and compliance that should be simpler and cheaper than they are." />
   <section class="section-tight">
     <div class="wrap stack">
       {products.map((p) => (
@@ -36,7 +35,7 @@ const products = [
       ))}
     </div>
   </section>
-  <CTA title="Want a demo?" text="Book a call and I will walk you through FTG Books or FTG Review on your own numbers." />
+  <CTA title="Want a demo?" text="Book a call and we will walk you through FTG Books or FTG Review on your own numbers." />
 </Base>
 <style>
   .product { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; align-items: center; }

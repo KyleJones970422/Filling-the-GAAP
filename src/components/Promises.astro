@@ -5,8 +5,8 @@ const { compact = false } = Astro.props;
 ---
 <section class:list={['section-tight promises', { compact }]}>
   <div class="wrap">
-    {!compact && <span class="eyebrow">How I work</span>}
-    {!compact && <h2>Four things you can hold me to.</h2>}
+    {!compact && <span class="eyebrow">How we work</span>}
+    {!compact && <h2>Four things you can hold us to.</h2>}
     <ul class="promise-grid">
       {site.promises.map((p) => (
         <li>

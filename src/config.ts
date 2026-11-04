@@ -7,7 +7,7 @@ export const site = {
   url: 'https://www.ftgaap.co.za',
   tagline: 'Accounting and tax that closes the gap between where your finances are and where they should be.',
   description:
-    'Filling the GAAP is a remote South African accounting and tax practice run by a Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA). Personal tax, business accounting, payroll, VAT, CIPC and independent reviews, plus free accounting software for clients.',
+    'Filling the GAAP is a remote South African accounting and tax practice led by a Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA). Personal tax, business accounting, payroll, VAT, CIPC and independent reviews, plus free accounting software for clients.',
   owner: 'Kyle Jones',
   email: 'kyle@ftgaap.co.za',
   phoneDisplay: '067 148 7014',
@@ -23,16 +23,27 @@ export const site = {
     'Independent Reviewer (SA)',
   ],
   /**
-   * Registration numbers shown on the About page and in the footer so prospects can verify you.
-   * Leave a value empty to hide that line until you have it.
+   * The team shown on the About page. Photo is a path under /public (e.g. '/kyle.jpg');
+   * leave it empty to show initials. Add, remove or reorder people here.
    */
-  registrations: {
-    saipa: '',        // SAIPA membership number, e.g. '12345'
-    sarsPractitioner: '', // SARS tax practitioner number, e.g. 'PR-1234567'
-    cipcCustomerCode: '', // optional
-  },
-  /** Path under /public to your headshot, e.g. '/kyle.jpg'. Leave empty to show initials. */
-  headshot: '',
+  team: [
+    {
+      name: 'Kyle Jones',
+      initials: 'KJ',
+      role: 'Founder',
+      credentials: ['Professional Accountant (SA)', 'Professional Tax Practitioner (SA)', 'Independent Reviewer (SA)'],
+      photo: '',
+      bio: 'Kyle started in audit, then spent several years as a financial manager in industry across a range of sectors. He founded Filling the GAAP to combine professional accounting and tax with software he builds himself.',
+    },
+    {
+      name: 'New team member',
+      initials: '?',
+      role: 'Role to be confirmed',
+      credentials: [],
+      photo: '',
+      bio: 'Details coming soon. Replace this entry in src/config.ts with their name, role, credentials and a short bio.',
+    },
+  ],
   /** Google Business Profile review link. When set, a "Review us on Google" link appears with the testimonials. */
   googleReviewsUrl: '',
   /** Client testimonials. The section is hidden until this list has at least one entry. */
@@ -43,8 +54,8 @@ export const site = {
   promises: [
     { title: 'Fixed fees, in writing', text: 'A written quote before any work starts. No hourly billing and no surprise invoices.' },
     { title: 'Month to month', text: 'No lock-in contracts. One month\'s notice if you ever want to leave, with a proper handover.' },
-    { title: 'Reply within one business day', text: 'Email, WhatsApp or phone. You deal with me directly, every time, not a call centre.' },
-    { title: 'Free switch', text: 'Moving from another accountant? I handle the clearance, SARS and CIPC access and the catch-up at no charge.' },
+    { title: 'Reply within one business day', text: 'Email, WhatsApp or phone. You deal with the people who do your work, not a call centre.' },
+    { title: 'Free switch', text: 'Moving from another accountant? We handle the clearance, SARS and CIPC access and the catch-up at no charge.' },
   ],
   social: {
     linkedin: '',
@@ -55,7 +66,7 @@ export const site = {
   defaultTaxYear: 2027,
 };
 
-export const whatsappLink = (text = 'Hi Kyle, I found you via ftgaap.co.za and would like to chat about my accounting and tax needs.') =>
+export const whatsappLink = (text = 'Hi, I found Filling the GAAP via ftgaap.co.za and would like to chat about my accounting and tax needs.') =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export const nav = [
@@ -67,7 +78,6 @@ export const nav = [
   ]},
   { label: 'Solutions', href: '/solutions', children: [
     { label: 'FTG Books', href: '/solutions/ftg-books' },
-    { label: 'Custom development', href: '/solutions/custom-development' },
   ]},
   { label: 'Resources', href: '/resources', children: [
     { label: 'Articles', href: '/resources' },

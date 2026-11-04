@@ -4,44 +4,46 @@ import PageHero from '../components/PageHero.astro';
 import CTA from '../components/CTA.astro';
 import Promises from '../components/Promises.astro';
 import { site } from '../config';
-
 ---
-<Base title="About" description={`Meet ${site.owner}, the Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA) behind Filling the GAAP. Ten years across audit, industry and financial management.`}>
-  <PageHero eyebrow="About" title="An accountant who has sat on both sides of the desk." lede="Ten years across the auditing profession and as a financial manager in industry, now in a one-person practice built around straight answers and good software." />
+<Base title="About" description={`Meet the team behind Filling the GAAP, a remote South African accounting and tax practice led by ${site.owner}, Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA).`}>
+  <PageHero eyebrow="About" title="Accountants who have sat on both sides of the desk." lede="A small, remote practice built on audit discipline, industry experience and software we write ourselves. Straight answers, fixed fees, and people who know your file." />
 
   <section class="section-tight">
-    <div class="wrap about-grid">
-      <div class="portrait" aria-hidden="true">
-        {site.headshot ? (
-          <img class="portrait-img" src={site.headshot} alt={site.owner} width="300" height="375" loading="eager" />
-        ) : (
-          <div class="portrait-frame">
-            <span class="initials">KJ</span>
-          </div>
-        )}
-        <ul class="cred-list">
-          {site.credentials.map((c) => <li>{c}</li>)}
-        </ul>
-        {(site.registrations.saipa || site.registrations.sarsPractitioner) && (
-          <div class="verify">
-            <h4>Verify my registration</h4>
-            {site.registrations.saipa && <p>SAIPA member no. <strong>{site.registrations.saipa}</strong><br /><a href="https://www.saipa.co.za/" target="_blank" rel="noopener">Check on the SAIPA register</a></p>}
-            {site.registrations.sarsPractitioner && <p>SARS tax practitioner no. <strong>{site.registrations.sarsPractitioner}</strong><br /><a href="https://www.sars.gov.za/individuals/tax-practitioners/" target="_blank" rel="noopener">Check on SARS eFiling</a></p>}
-          </div>
-        )}
-      </div>
-      <div class="prose">
-        <h2>Hello, I'm {site.owner}.</h2>
-        <p>I started my career in audit, where you learn quickly that the numbers in a set of financial statements are only as good as the bookkeeping underneath them, and that most problems are caused by things nobody explained to the business owner. I then moved into industry as a financial manager, running finance functions across several sectors, where I learned the other half of the job: what owners and directors actually need from their numbers to make decisions.</p>
-        <p>Filling the GAAP brings those two halves together. The name is a play on GAAP, generally accepted accounting practice, and on the gap I kept seeing: between what small businesses and individuals are expected to comply with and the support they can actually afford. I fill it with two things. Personal, professional service on a fixed fee, and software I built myself so that the parts of accounting that should be cheap or free actually are.</p>
-        <h3>Qualifications and registrations</h3>
-        <ul>
-          <li><strong>Professional Accountant (SA)</strong>, a SAIPA designation. I may compile financial statements and act as accounting officer.</li>
-          <li><strong>Professional Tax Practitioner (SA)</strong>, registered with SARS as a tax practitioner. I may prepare and submit returns and represent you in disputes.</li>
-          <li><strong>Independent Reviewer (SA)</strong>, qualified to perform independent reviews of annual financial statements under the Companies Act.</li>
-        </ul>
-        <h3>The practice</h3>
-        <p>I run the practice alone, deliberately. You deal with me, every time, and I know your file. The work is fully remote, which keeps overheads low and lets me serve clients anywhere in South Africa and South Africans abroad. I am available {site.hours.toLowerCase()}, and on WhatsApp for anything quick.</p>
+    <div class="wrap narrow prose">
+      <h2>Why Filling the GAAP exists</h2>
+      <p>The name is a play on GAAP, generally accepted accounting practice, and on the gap we kept seeing: between what small businesses and individuals are expected to comply with and the support they can actually afford. Most practices close that gap with more hours and bigger invoices. We close it with two things. Personal, professional service on a fixed fee, and software we build ourselves so that the parts of accounting that should be cheap or free actually are.</p>
+      <p>The practice started in audit and industry. Years of reviewing other people's financial statements teaches you that the numbers are only as good as the bookkeeping underneath, and that most problems come from things nobody explained to the business owner. Years as a financial manager teach the other half: what owners and directors actually need from their numbers to make decisions. Filling the GAAP brings those halves together.</p>
+      <h3>How the practice works</h3>
+      <p>We are fully remote, which keeps overheads low and lets us serve clients anywhere in South Africa and South Africans abroad. Every client has a named person who knows their file and answers their questions, and every engagement includes FTG Books as a client portal. We are available {site.hours}, and on WhatsApp for anything quick.</p>
+      <h3>Designations held in the practice</h3>
+      <ul>
+        <li><strong>Professional Accountant (SA)</strong>, a SAIPA designation. Qualified to compile financial statements and act as accounting officer.</li>
+        <li><strong>Professional Tax Practitioner (SA)</strong>, registered with SARS as a tax practitioner. Qualified to prepare and submit returns and represent you in disputes.</li>
+        <li><strong>Independent Reviewer (SA)</strong>, qualified to perform independent reviews of annual financial statements under the Companies Act.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <span class="eyebrow">The team</span>
+      <h2>The people who do your work.</h2>
+      <div class="team mt-2">
+        {site.team.map((m) => (
+          <article class="card member">
+            {m.photo ? (
+              <img class="member-photo" src={m.photo} alt={m.name} width="240" height="300" loading="lazy" />
+            ) : (
+              <div class="member-frame" aria-hidden="true"><span class="initials">{m.initials}</span></div>
+            )}
+            <div class="member-body">
+              <h3>{m.name}</h3>
+              <p class="role">{m.role}</p>
+              {m.credentials.length > 0 && <p class="creds">{m.credentials.map((c) => <span class="pill pill-outline">{c}</span>)}</p>}
+              <p class="bio">{m.bio}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -51,14 +53,15 @@ import { site } from '../config';
   <CTA title="Let's see if we're a fit." text="A free 30-minute call. No pitch, just a conversation about where you are and what would help." />
 </Base>
 <style>
-  .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: start; padding-bottom: 2rem; }
-  .portrait-frame { aspect-ratio: 4/5; border-radius: var(--radius); background: linear-gradient(160deg, var(--primary), var(--primary-dark)); display: grid; place-items: center; box-shadow: var(--shadow); }
-  .initials { font-family: var(--font-heading); font-size: 4rem; color: var(--accent-soft); letter-spacing: 0.05em; }
-  .cred-list { list-style: none; padding: 0; margin: 1rem 0 0; }
-  .cred-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--heading); font-size: 0.95rem; }
-  .portrait-img { border-radius: var(--radius); box-shadow: var(--shadow); object-fit: cover; aspect-ratio: 4/5; width: 100%; }
-  .verify { margin-top: 1.2rem; font-size: 0.9rem; }
-  .verify h4 { margin-bottom: 0.5rem; }
-  .verify p { margin-bottom: 0.6rem; }
-  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } .portrait { max-width: 260px; } }
+  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 1.25rem; }
+  .member { display: grid; grid-template-columns: 150px 1fr; gap: 1.4rem; align-items: start; }
+  .member-photo, .member-frame { width: 150px; aspect-ratio: 4/5; border-radius: var(--radius); object-fit: cover; }
+  .member-frame { background: linear-gradient(160deg, var(--primary), var(--primary-dark)); display: grid; place-items: center; }
+  .initials { font-family: var(--font-heading); font-weight: 800; font-size: 2.4rem; color: var(--sage); letter-spacing: 0.05em; }
+  .member h3 { margin-bottom: 0.1rem; }
+  .role { color: var(--accent-dark); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .creds { margin-bottom: 0.6rem; }
+  .creds .pill { font-size: 0.72rem; }
+  .bio { margin: 0; font-size: 0.97rem; }
+  @media (max-width: 520px) { .member { grid-template-columns: 1fr; } .member-photo, .member-frame { width: 120px; } }
 </style>

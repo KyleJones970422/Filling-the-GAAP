@@ -40,7 +40,7 @@ const topics = [
               <a class="btn btn-primary" href={site.bookingUrl} target="_blank" rel="noopener">Open booking calendar</a>
             </>
           ) : (
-            <p class="mb-0">Use the form and tell me a few times that suit you. I will confirm a 30-minute video call within one business day.</p>
+            <p class="mb-0">Use the form and tell us a few times that suit you. We will confirm a 30-minute video call within one business day.</p>
           )}
         </div>
         <p class="small muted">{site.location} {site.hours}.</p>
@@ -57,7 +57,7 @@ const topics = [
         <div class="field-row">
           <div class="field"><label for="phone">Phone or WhatsApp</label><input type="tel" id="phone" name="phone" autocomplete="tel" /></div>
           <div class="field">
-            <label for="topic">What can I help with?</label>
+            <label for="topic">What can we help with?</label>
             <select id="topic" name="topic">{topics.map((t) => <option value={t.v}>{t.l}</option>)}</select>
           </div>
         </div>
@@ -70,14 +70,14 @@ const topics = [
           </div>
         </div>
         <div class="field">
-          <label for="message">Tell me a bit about your situation</label>
+          <label for="message">Tell us a bit about your situation</label>
           <textarea id="message" name="message" required placeholder="What you need, any deadlines, and a few times that suit you for a call."></textarea>
         </div>
         <div class="field">
           <label class="consent"><input type="checkbox" name="consent" required /> <span>I agree to Filling the GAAP storing my details to respond to this enquiry, as described in the <a href="/privacy">privacy policy</a>.</span></label>
         </div>
         <button type="submit" class="btn btn-primary">Send message</button>
-        <p class="small muted" style="margin:0.8rem 0 0">I reply within one business day. Please do not send tax numbers, ID numbers or bank details through this form.</p>
+        <p class="small muted" style="margin:0.8rem 0 0">We reply within one business day. Please do not send tax numbers, ID numbers or bank details through this form.</p>
       </form>
     </div>
   </section>
