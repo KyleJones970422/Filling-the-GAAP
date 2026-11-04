@@ -118,8 +118,8 @@ const def = taxYears[site.defaultTaxYear];
     if (period === 'monthly') income *= 12;
     const age = Number($('age').value);
     const medical = Number($('medical').value) || 0;
-    let ra = Number($('ra').value) || 0;
-    if (period === 'monthly') ra *= 12;
+    // This field is always annual: the Annual/Monthly toggle applies to income only.
+    const ra = Number($('ra').value) || 0;
 
     const raCap = Math.min(income * 0.275, 350000);
     const raDed = Math.min(ra, raCap);
@@ -143,7 +143,8 @@ const def = taxYears[site.defaultTaxYear];
     $('r-medical').textContent = '− ' + R(Math.min(med, Math.max(0, gross - rebates)));
     $('r-eff').textContent = pct(eff);
     $('r-marg').textContent = ti > 0 ? pct(marginal) : '0%';
-    $('r-takehome').textContent = R(Math.max(0, income - net) / 12);
+    // Uses the full contribution, not raDed: amounts above the deduction cap still leave the pay packet.
+    $('r-takehome').textContent = R(Math.max(0, income - ra - net) / 12);
     const threshold = age >= 75 ? year.thresholds.from75 : age >= 65 ? year.thresholds.from65 : year.thresholds.under65;
     $('r-note').textContent = ti > 0 && ti <= threshold
       ? `Your taxable income is below the ${year.label} tax threshold of ${R(threshold)} for your age group, so no tax is payable.`

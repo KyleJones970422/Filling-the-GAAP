@@ -15,7 +15,8 @@ interface Props {
 }
 const { title, description = site.description, image = '/og.png', type = 'website', noindex = false, jsonLd } = Astro.props;
 const fullTitle = title === site.name ? `${site.name} | Accounting & Tax, South Africa` : `${title} | ${site.name}`;
-const canonical = new URL(Astro.url.pathname, site.url).href.replace(/\/$/, '') || site.url;
+// build.format 'file' puts .html in Astro.url.pathname at build time; public URLs have no extension.
+const canonical = new URL(Astro.url.pathname, site.url).href.replace(/\.html$/, '').replace(/\/$/, '') || site.url;
 const ogImage = new URL(image, site.url).href;
 
 const orgLd = {

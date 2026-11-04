@@ -102,7 +102,6 @@ export const clientTypes = [
   { title: 'Start-ups and small businesses', text: 'Owner-managed companies that want clean books, compliant filings and a partner who speaks plainly.' },
   { title: 'Companies and trusts', text: 'Private companies, family and business trusts with annual financial statement, IT12T and compliance requirements.' },
   { title: 'NPOs and body corporates', text: 'Non-profit companies, PBOs and sectional title schemes needing independent reviews, AFS and tax exemption support.' },
-  { title: 'Accounting practices', text: 'Fellow practitioners who use FTG Review to run efficient, well-documented independent review engagements.' },
 ];
 
 export const steps = [

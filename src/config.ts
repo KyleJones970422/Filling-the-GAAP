@@ -8,11 +8,12 @@ export const site = {
   tagline: 'Accounting and tax that closes the gap between where your finances are and where they should be.',
   description:
     'Filling the GAAP is a remote South African accounting and tax practice led by a Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA). Personal tax, business accounting, payroll, VAT, CIPC and independent reviews, plus free accounting software for clients.',
-  owner: 'Kyle Jones',
-  email: 'kyle@ftgaap.co.za',
-  phoneDisplay: '067 148 7014',
-  phoneIntl: '+27671487014',
-  whatsapp: '27671487014',
+  owner: 'John Knight',
+  email: 'john@ftgaap.co.za',
+  phoneDisplay: '081 285 7843',
+  phoneIntl: '+27812857843',
+  whatsapp: '27812857843',
+  whatsappDisplay: '081 285 7843',
   hours: 'Monday to Friday, 08:00 to 18:00',
   location: 'Fully remote. Serving clients across South Africa.',
   /** Paste your Calendly / Cal.com / Google appointment link here to enable the booking embed. */
@@ -23,17 +24,17 @@ export const site = {
     'Independent Reviewer (SA)',
   ],
   /**
-   * The team shown on the About page. Photo is a path under /public (e.g. '/kyle.jpg');
+   * The team shown on the About page. Photo is a path under /public (e.g. '/john.jpg');
    * leave it empty to show initials. Add, remove or reorder people here.
    */
   team: [
     {
-      name: 'Kyle Jones',
-      initials: 'KJ',
+      name: 'John Knight',
+      initials: 'JK',
       role: 'Founder',
       credentials: ['Professional Accountant (SA)', 'Professional Tax Practitioner (SA)', 'Independent Reviewer (SA)'],
       photo: '',
-      bio: 'Kyle started in audit, then spent several years as a financial manager in industry across a range of sectors. He founded Filling the GAAP to combine professional accounting and tax with software he builds himself.',
+      bio: 'John started in audit, then spent several years as a financial manager in industry across a range of sectors, before founding Filling the GAAP to combine professional accounting and tax with software built in-house.',
     },
     {
       name: 'New team member',

@@ -1,6 +1,6 @@
 # Filling the GAAP — website
 
-Marketing site for [www.ftgaap.co.za](https://www.ftgaap.co.za): accounting and tax services, the FTG Books and FTG Review products, free tools and a resources blog.
+Marketing site for [www.ftgaap.co.za](https://www.ftgaap.co.za): accounting and tax services, the FTG Books product, free tools and a resources blog.
 
 Built with [Astro](https://astro.build) as a fully static site and deployed on Netlify.
 
@@ -51,7 +51,7 @@ Your content in Markdown.
 
 ### Things to fill in before launch
 
-- `team` in `src/config.ts`: name, role, credentials, bio and photo for each person on the About page. Drop photos into `public/` (e.g. `public/kyle.jpg`) and set `photo: '/kyle.jpg'`. Initials show until then.
+- `team` in `src/config.ts`: name, role, credentials, bio and photo for each person on the About page. Drop photos into `public/` (e.g. `public/john.jpg`) and set `photo: '/john.jpg'`. Initials show until then.
 - `reviews` and `googleReviewsUrl`: add testimonials as `{ quote, name, role, rating }`. The section appears on the home page once there is at least one.
 - `pricesNote`: currently "Prices exclude VAT where applicable." Change it if you are not VAT registered.
 
@@ -61,7 +61,7 @@ Paste your Calendly, Cal.com or Google appointment link into `bookingUrl` in `sr
 
 ### Contact form
 
-The form on `/contact` uses [Netlify Forms](https://docs.netlify.com/forms/setup/). After the first deploy, open the Netlify dashboard, go to Forms, and add an email notification to `kyle@ftgaap.co.za`. Submissions redirect to `/thank-you`.
+The form on `/contact` uses [Netlify Forms](https://docs.netlify.com/forms/setup/). After the first deploy, open the Netlify dashboard, go to Forms, and add an email notification to `john@ftgaap.co.za`. Submissions redirect to `/thank-you`.
 
 ### Social share image
 

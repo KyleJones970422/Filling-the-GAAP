@@ -202,8 +202,6 @@ th { color: var(--heading); font-weight: 700; font-size: 0.85rem; letter-spacing
   border-left: 4px solid var(--accent); background: var(--surface-2); padding: 1rem 1.2rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 .notice p:last-child { margin: 0; }
-.stat { font-family: var(--font-heading); font-weight: 800; font-size: 2.4rem; color: var(--heading); line-height: 1; letter-spacing: -0.02em; }
-.stat-label { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; }
 
 details.faq { border-bottom: 1px solid var(--border); padding: 0.4rem 0; }
 details.faq summary {

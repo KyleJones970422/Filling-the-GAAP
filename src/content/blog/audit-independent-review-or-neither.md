@@ -53,7 +53,7 @@ Put the two together and the practical outcome for most small businesses is:
 
 An independent review under ISRE 2400 is an engagement where the reviewer performs enquiries and analytical procedures to obtain **limited assurance** that nothing has come to their attention suggesting the financial statements are materially misstated. There is no testing of controls, no confirmations, no inventory counts. It typically costs a fraction of an audit and is finished in days rather than weeks.
 
-As an Independent Reviewer (SA) I perform these engagements for companies, and I built [FTG Review](/solutions/ftg-review) to make them efficient and well documented for other practitioners too.
+As an Independent Reviewer (SA) I perform these engagements for companies.
 
 ## Do not forget the Financial Accountability Supplement
 
