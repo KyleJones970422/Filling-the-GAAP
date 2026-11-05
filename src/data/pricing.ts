@@ -65,7 +65,7 @@ export const businessPlans: Plan[] = [
     price: 'R9,500',
     period: 'per month',
     tagline: 'Turnover R5 million and up. A finance function without the headcount.',
-    features: ['Everything in Growth', 'Payroll for up to 20 employees', 'Monthly management accounts and cash flow forecast', 'Independent review of annual financial statements', 'Quarterly strategy meeting', 'Priority response'],
+    features: ['Everything in Growth', 'Payroll for up to 20 employees', 'Monthly management accounts and cash flow forecast', 'Quarterly strategy meeting', 'Priority response'],
   },
 ];
 
@@ -76,7 +76,7 @@ export const mostRequested: OnceOff[] = [
   { service: 'Company registration (CIPC)', price: 'from R1,450', note: 'Name reservation, registration, share certificates and SARS income tax registration. CIPC fees included.' },
   { service: 'Personal tax return (ITR12)', price: 'from R850', note: 'See the personal tax packages below for what each level includes.' },
   { service: 'Annual financial statements (compilation)', price: 'from R4,500', note: 'Depends on size, complexity and the state of the underlying records.' },
-  { service: 'Independent review (ISRE 2400)', price: 'from R8,500', note: 'For companies that are not owner-managed, with a public interest score below 350 and statements that do not need an audit.' },
+  { service: 'Independent review (ISRE 2400)', price: 'from R8,500', note: 'For companies that are not owner-managed, with a public interest score below 350 and statements that do not need an audit. We only review statements we did not prepare.' },
 ];
 
 export const onceOff: OnceOff[] = [

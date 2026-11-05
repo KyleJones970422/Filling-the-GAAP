@@ -26,5 +26,5 @@ export const annual: Deadline[] = [
   { when: '12 months after financial year end', what: 'Company income tax return (ITR14)', who: 'All companies, including dormant ones', category: 'SARS', detail: 'Companies with a non-February year end have provisional payments six months into the year and at year end.' },
   { when: '30 business days after your incorporation anniversary', what: 'CIPC annual return and beneficial ownership declaration', who: 'All companies and close corporations', category: 'CIPC', detail: 'Annual financial statements or a Financial Accountability Supplement are filed with the return. Late filing attracts penalties and eventual deregistration.' },
   { when: 'Within 6 months of financial year end', what: 'Annual financial statements approved by the board', who: 'All companies', category: 'CIPC', detail: 'Companies Act section 30. Audited or independently reviewed where required.' },
-  { when: '31 March (COIDA)', what: 'Return of Earnings (W.As.8)', who: 'All employers', category: 'Payroll', detail: 'Submitted to the Compensation Fund; the window is often extended, confirm each year.' },
+  { when: '1 April to 30 June (COIDA)', what: 'Return of Earnings (W.As.8)', who: 'All employers', category: 'Payroll', detail: 'Submitted to the Compensation Fund; the window is often extended, confirm each year.' },
 ];

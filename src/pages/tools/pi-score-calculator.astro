@@ -13,11 +13,10 @@ import CTA from '../../components/CTA.astro';
           <label for="type">Type of entity</label>
           <select id="type" name="type">
             <option value="private">Private company (Pty) Ltd</option>
-            <option value="cc">Close corporation</option>
             <option value="personal">Personal liability company (Inc)</option>
-            <option value="npc">Non-profit company (NPC)</option>
             <option value="public">Public or state-owned company</option>
           </select>
+          <span class="hint">Not for close corporations or non-profit companies.</span>
         </div>
         <div class="field-row">
           <div class="field">
@@ -26,9 +25,9 @@ import CTA from '../../components/CTA.astro';
             <span class="hint">Average over the financial year, including directors who are employed.</span>
           </div>
           <div class="field">
-            <label for="holders" id="holders-label">Individuals with a beneficial interest in shares</label>
+            <label for="holders">Individuals with a beneficial interest in shares</label>
             <input type="number" id="holders" min="0" step="1" value="1" inputmode="numeric" />
-            <span class="hint" id="holders-hint">Count natural persons, looking through trusts and holding companies.</span>
+            <span class="hint">Count natural persons, looking through trusts and holding companies.</span>
           </div>
         </div>
         <div class="field-row">
@@ -132,10 +131,6 @@ import CTA from '../../components/CTA.astro';
 
   function calc() {
     const type = (document.getElementById('type') as HTMLSelectElement).value;
-    const isNpc = type === 'npc';
-    $('holders-label').textContent = isNpc ? 'Number of members' : 'Individuals with a beneficial interest in shares';
-    $('holders-hint').textContent = isNpc ? 'Members of the non-profit company. 1 point each.' : 'Count natural persons, looking through trusts and holding companies.';
-
     const emp = val('employees');
     const turn = perMillion(val('turnover'));
     const liab = perMillion(val('liabilities'));

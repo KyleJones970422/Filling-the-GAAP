@@ -12,7 +12,7 @@ const pillars = [
   { title: 'Personal tax', text: 'ITR12 and provisional returns, SARS disputes, tax clearance, capital gains, rental, foreign and expat tax.', href: '/services/individuals', icon: 'M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.2 6.6 3.7L12 11.6 5.4 7.9 12 4.2ZM5 9.6l6 3.3v6.6l-6-3.3V9.6Zm8 9.9v-6.6l6-3.3v6.6l-6 3.3Z' },
   { title: 'Business accounting', text: 'Bookkeeping, management accounts, annual financial statements, VAT, payroll, CIPC and company tax, on a monthly retainer.', href: '/services/businesses', icon: 'M4 20h16v-2H4v2Zm2-4h3V9H6v7Zm5 0h3V4h-3v12Zm5 0h3v-5h-3v5Z' },
   { title: 'Independent reviews', text: 'ISRE 2400 independent reviews and compilation engagements for companies and trusts that do not need a full audit.', href: '/services/businesses#reviews', icon: 'M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z' },
-  { title: 'Your own client portal', text: 'Practice Nexus is your client portal: one secure place to upload documents and share them with us. Free with any engagement.', href: '/contact', icon: 'M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z' },
+  { title: 'Your document portal', text: 'Practice Nexus is your document management portal: one secure place to upload all the information we need to assist with your financial affairs. Free with any engagement, with access granted once you have signed up as a client.', href: site.practiceNexusUrl, icon: 'M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z' },
 ];
 
 const ld = {
@@ -68,7 +68,7 @@ const ld = {
       </div>
       <div class="grid grid-2">
         {pillars.map((p) => (
-          <a class="card-link" href={p.href}>
+          <a class="card-link" href={p.href} {...(p.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>
             <div class="card pillar">
               <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d={p.icon}/></svg></div>
               <h3>{p.title}</h3>
@@ -90,7 +90,7 @@ const ld = {
         <p>Most small-business software stops at a trial balance and charges extra for everything else. FTG Books keeps your books clean, handles VAT, calculates your public interest score from your own data and, when you qualify, compiles your annual financial statements.</p>
         <ul class="check-list">
           <li>See your books live</li>
-          <li>Upload documents through Practice Nexus, our secure client portal</li>
+          <li>Upload your documents through <a href={site.practiceNexusUrl} target="_blank" rel="noopener">Practice Nexus</a>, our document management portal</li>
           <li>Bank imports, reconciliations and invoicing</li>
           <li>VAT201 figures and provisional tax estimates</li>
           <li>Automatic PI score and assurance-level check</li>
@@ -99,6 +99,7 @@ const ld = {
         </ul>
         <div class="btn-row" style="margin-top:1.4rem">
           <a class="btn btn-dark" href="/solutions/ftg-books">Explore FTG Books</a>
+          <a class="btn btn-outline" href={site.ftgBooksUrl} target="_blank" rel="noopener">Visit www.ftgbooks.co.za</a>
           <a class="btn btn-outline" href="/tools/pi-score-calculator">Check if you qualify</a>
         </div>
       </div>

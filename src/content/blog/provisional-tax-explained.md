@@ -2,7 +2,7 @@
 title: "Provisional tax explained: who pays, when, and how to avoid the penalties"
 description: "Provisional tax is not an extra tax. It is a payment schedule. Here is how the August and February payments work, how to estimate, and how to avoid the 20% underestimation penalty."
 date: 2026-07-15
-updated: 2026-11-04
+updated: 2026-11-05
 category: Personal tax
 tags: [IRP6, provisional tax, freelancers, sole traders]
 ---

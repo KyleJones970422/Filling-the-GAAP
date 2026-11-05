@@ -2,17 +2,19 @@
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTA from '../../components/CTA.astro';
+import { site } from '../../config';
 
 const products = [
-  { name: 'FTG Books', for: 'Small businesses and their accountants', status: 'Live', href: '/solutions/ftg-books', text: 'Cloud accounting built around South African compliance: bank imports, VAT, provisional tax estimates, an automatic PI score, and IFRS for SMEs annual financial statements you can compile yourself when you qualify.', price: 'Free for clients. Paid plans for everyone else.' },
+  { name: 'FTG Books', for: 'Small businesses and their accountants', status: 'Live', href: '/solutions/ftg-books', text: 'Cloud accounting built around South African compliance: bank imports, VAT, provisional tax estimates, an automatic PI score, and IFRS for SMEs annual financial statements you can compile yourself when you qualify.', price: 'Free for clients. R149 per company per month for everyone else.' },
+  { name: 'Practice Nexus', for: 'Filling the GAAP clients', status: 'Live', href: site.practiceNexusUrl, text: 'Our document management portal: one secure place to upload all the information we need to assist with your financial affairs.', price: 'Access is granted once you have signed up as a client.' },
 ];
 ---
-<Base title="Solutions" description="Software built by an accountant for South African businesses: FTG Books accounting software.">
+<Base title="Solutions" description="Software built by an accountant for South African businesses: FTG Books accounting software and the Practice Nexus document management portal.">
   <PageHero eyebrow="Solutions" title="Software built by an accountant who felt the gaps." lede="We build tools for the parts of accounting and compliance that should be simpler and cheaper than they are." />
   <section class="section-tight">
     <div class="wrap stack">
       {products.map((p) => (
-        <a class="card-link" href={p.href}>
+        <a class="card-link" href={p.href} {...(p.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>
           <div class="card product">
             <div class="product-main">
               <div class="product-head">
@@ -32,6 +34,7 @@ const products = [
           </div>
         </a>
       ))}
+      <div><a class="btn btn-primary" href={site.ftgBooksUrl} target="_blank" rel="noopener">Go to FTG Books</a></div>
     </div>
   </section>
   <CTA title="Want a demo?" text="Book a call and we will walk you through FTG Books on your own numbers." />

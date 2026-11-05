@@ -101,12 +101,12 @@ export const clientTypes = [
   { title: 'Freelancers and sole traders', text: 'Provisional taxpayers who need their income and expenses handled correctly and their payments planned.' },
   { title: 'Start-ups and small businesses', text: 'Owner-managed companies that want clean books, compliant filings and a partner who speaks plainly.' },
   { title: 'Companies and trusts', text: 'Private companies, family and business trusts with annual financial statement, ITR12T and compliance requirements.' },
-  { title: 'NPOs and body corporates', text: 'Non-profit companies, PBOs and sectional title schemes needing independent reviews, AFS and tax exemption support.' },
+  { title: 'NPOs and body corporates', text: 'Non-profit companies, PBOs and sectional title schemes needing annual financial statements and tax exemption support.' },
 ];
 
 export const steps = [
   { n: '01', title: 'Free consultation', text: 'A 30-minute call to understand your situation, your deadlines and what is keeping you up at night.' },
-  { n: '02', title: 'Clear fixed quote', text: 'You get a written scope and price. No hourly billing, no surprises, and no work starts until you say go.' },
+  { n: '02', title: 'Clear fixed quote', text: 'You get a written scope and price. No surprises, and no work starts until you say go.' },
   { n: '03', title: 'Onboarding and clean-up', text: 'We collect your records, take over SARS and CIPC access, set up FTG Books and bring everything current.' },
   { n: '04', title: 'Ongoing, proactive care', text: 'Deadlines tracked, returns filed, questions answered on WhatsApp, and a real conversation about the numbers.' },
 ];
@@ -114,7 +114,7 @@ export const steps = [
 export const switching = [
   { title: 'Professional clearance', text: 'We write to your current accountant for clearance and your records. You do not need to have an awkward conversation.' },
   { title: 'SARS and CIPC access', text: 'You sign a power of attorney and we take over your eFiling profile and CIPC customer code.' },
-  { title: 'Records and catch-up', text: 'Your accounting file, prior financial statements and tax returns move across. Any backlog is brought current.' },
+  { title: 'Data move and catch-up', text: 'Your data moves from your old accounting system to the new one at no charge. Any historical catch-up is billed per hour at a reduced rate.' },
   { title: 'Steady state', text: 'From the next month-end you are on the normal rhythm: books done, returns filed, deadlines tracked.' },
 ];
 

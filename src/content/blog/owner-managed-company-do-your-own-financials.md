@@ -2,7 +2,7 @@
 title: "Owner-managed with a PI score under 100? You may not need an accountant to compile your financials"
 description: "Thousands of small companies pay for compiled financial statements they are allowed to prepare themselves. Here is when that is true, what you still need, and how FTG Books fills the gap."
 date: 2026-08-15
-updated: 2026-11-04
+updated: 2026-11-05
 category: Software
 tags: [FTG Books, AFS, small business, owner-managed]
 ---
@@ -35,7 +35,7 @@ I built FTG Books because the software most small businesses use either stops at
 - calculates your PI score automatically from your own data, and
 - when you qualify, **compiles IFRS for SMEs compliant annual financial statements** from your trial balance, ready for board approval.
 
-It is free for all my accounting and tax clients, and available on a paid plan for everyone else.
+It is free for all my accounting and tax clients, and R149 per company per month for everyone else.
 
 ## When you should still bring in a professional
 

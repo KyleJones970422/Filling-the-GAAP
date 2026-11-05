@@ -14,6 +14,10 @@ export const site = {
   phoneIntl: '+27812857843',
   whatsapp: '27812857843',
   whatsappDisplay: '081 285 7843',
+  /** The FTG Books accounting software website. */
+  ftgBooksUrl: 'https://www.ftgbooks.co.za',
+  /** The Practice Nexus document management portal. */
+  practiceNexusUrl: 'https://www.practicenexus.co.za',
   hours: 'Monday to Friday, 08:00 to 18:00',
   location: 'Fully remote. Serving clients across South Africa.',
   /** Paste your Calendly / Cal.com / Google appointment link here to enable the booking embed. */
@@ -36,14 +40,6 @@ export const site = {
       photo: '',
       bio: 'John started in audit, then spent several years as a financial manager in industry across a range of sectors, before founding Filling the GAAP to combine professional accounting and tax with software built in-house.',
     },
-    {
-      name: 'New team member',
-      initials: '?',
-      role: 'Role to be confirmed',
-      credentials: [],
-      photo: '',
-      bio: 'Details coming soon. Replace this entry in src/config.ts with their name, role, credentials and a short bio.',
-    },
   ],
   /** Google Business Profile review link. When set, a "Review us on Google" link appears with the testimonials. */
   googleReviewsUrl: '',
@@ -53,10 +49,10 @@ export const site = {
   pricesNote: 'Prices exclude VAT where applicable.',
   /** The four promises shown on the home and pricing pages. */
   promises: [
-    { title: 'Fixed fees, in writing', text: 'A written quote before any work starts. No hourly billing and no surprise invoices.' },
+    { title: 'Fixed fees, in writing', text: 'A written quote before any work starts. No hourly billing on regular work and no surprise invoices.' },
     { title: 'Month to month', text: 'No lock-in contracts. One month\'s notice if you ever want to leave, with a proper handover.' },
     { title: 'Reply within one business day', text: 'Email, WhatsApp or phone. You deal with the people who do your work, not a call centre.' },
-    { title: 'Free switch', text: 'Moving from another accountant? We handle the clearance, SARS and CIPC access and the catch-up at no charge.' },
+    { title: 'Free switch', text: 'Moving from another accountant? We move your data from your old accounting system to the new one at no charge. Historical catch-up is billed per hour at a reduced rate.' },
   ],
   social: {
     linkedin: '',
