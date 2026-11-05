@@ -8,7 +8,6 @@ export const individualGroups: ServiceGroup[] = [
     services: [
       { title: 'Personal income tax returns (ITR12)', blurb: 'Accurate, on-time returns for salaried employees, commission earners and multiple-income households.', details: ['Review of your SARS auto-assessment before you accept it', 'Medical, retirement annuity, travel and home-office deductions', 'Multiple IRP5s and additional income', 'Submission via eFiling and follow-up on assessments and refunds'] },
       { title: 'Provisional tax (IRP6)', blurb: 'Estimates and submissions for freelancers, sole traders, directors and anyone with income not fully taxed at source.', details: ['First, second and voluntary third payment calculations', 'Penalty-avoidance planning around the 80% and 90% accuracy rules', 'Cash-flow planning so the February payment never surprises you'] },
-      { title: 'Tax directives', blurb: 'Applications for lump-sum, severance and fixed-percentage directives for commission earners and independent contractors.' },
     ],
   },
   {
@@ -30,11 +29,10 @@ export const individualGroups: ServiceGroup[] = [
     ],
   },
   {
-    title: 'Foreign income, expats and estates',
+    title: 'Foreign income and expats',
     intro: 'Specialist situations that most generalist preparers get wrong.',
     services: [
       { title: 'Foreign income and expatriate tax', blurb: 'The R1.25 million foreign employment exemption, double tax agreements, tax residency and ceasing residency, and foreign tax credits.' },
-      { title: 'Estates and deceased estates', blurb: 'Pre- and post-date-of-death returns, executor support and estate duty considerations handled with care.' },
     ],
   },
 ];

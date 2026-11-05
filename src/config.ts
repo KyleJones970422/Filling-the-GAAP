@@ -35,10 +35,10 @@ export const site = {
     {
       name: 'John Knight',
       initials: 'JK',
-      role: 'Founder',
+      role: 'Director',
       credentials: ['Professional Accountant (SA)', 'Professional Tax Practitioner (SA)', 'Independent Reviewer (SA)'],
       photo: '',
-      bio: 'John started in audit, then spent several years as a financial manager in industry across a range of sectors, before founding Filling the GAAP to combine professional accounting and tax with software built in-house.',
+      bio: 'John started in audit, then spent several years as a financial manager in industry across a range of sectors. As Director of Filling the GAAP, John combines professional accounting and tax with software built in-house.',
     },
   ],
   /** Google Business Profile review link. When set, a "Review us on Google" link appears with the testimonials. */

@@ -30,7 +30,7 @@ const orgLd = {
   description: site.description,
   areaServed: 'ZA',
   priceRange: 'R',
-  founder: { '@type': 'Person', name: site.owner, jobTitle: site.credentials.join(', ') },
+  employee: { '@type': 'Person', name: site.owner, jobTitle: site.team[0].role },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
