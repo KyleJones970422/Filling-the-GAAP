@@ -2,11 +2,12 @@
 title: "Owner-managed with a PI score under 100? You may not need an accountant to compile your financials"
 description: "Thousands of small companies pay for compiled financial statements they are allowed to prepare themselves. Here is when that is true, what you still need, and how FTG Books fills the gap."
 date: 2026-08-15
+updated: 2026-11-04
 category: Software
 tags: [FTG Books, AFS, small business, owner-managed]
 ---
 
-This is an unusual thing for an accountant to write, so let me say it plainly: **a lot of small companies do not need me to compile their annual financial statements.** If your company has a [public interest score](/tools/pi-score-calculator) below 100 and every shareholder is also a director, the Companies Act lets you prepare your own AFS and file them with CIPC without an audit or an independent review.
+This is an unusual thing for an accountant to write, so let me say it plainly: **a lot of small companies do not need me to compile their annual financial statements.** If your company has a [public interest score](/tools/pi-score-calculator) below 100 and every shareholder is also a director, the Companies Act lets you prepare your own AFS without an audit or an independent review.
 
 ## What you still have to do
 
@@ -14,9 +15,10 @@ This is an unusual thing for an accountant to write, so let me say it plainly: *
 
 - be prepared within **six months** of your financial year end,
 - comply with a recognised **financial reporting standard** (IFRS for SMEs is the norm for small companies),
-- fairly present the company's financial position, performance and cash flows,
-- be **approved and signed by the board**, and
-- be filed with your **CIPC annual return**, together with a Financial Accountability Supplement if they were not independently reviewed or audited.
+- fairly present the company's financial position, performance and cash flows, and
+- be **approved and signed by the board**.
+
+You do not have to file the statements themselves with CIPC. With your **CIPC annual return**, you file a **Financial Accountability Supplement** (Form CoR 30.2) instead.
 
 And your **tax** obligations are completely separate. You still need an ITR14 every year, provisional tax payments, VAT and PAYE if registered, and the numbers in your return must agree to your AFS.
 
@@ -31,7 +33,7 @@ I built FTG Books because the software most small businesses use either stops at
 - keeps your bookkeeping clean month by month with bank imports and reconciliations,
 - handles VAT and produces the figures for your VAT201,
 - calculates your PI score automatically from your own data, and
-- when you qualify, **compiles IFRS for SMEs compliant annual financial statements** from your trial balance, ready for board approval and CIPC filing.
+- when you qualify, **compiles IFRS for SMEs compliant annual financial statements** from your trial balance, ready for board approval.
 
 It is free for all my accounting and tax clients, and available on a paid plan for everyone else.
 

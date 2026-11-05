@@ -13,6 +13,7 @@ export type TaxYear = {
   thresholds: { under65: number; from65: number; from75: number };
   medicalCredit: { firstTwo: number; additional: number }; // per month, per beneficiary
   interestExemption: { under65: number; from65: number };
+  retirementCap: number; // annual limit on deductible retirement contributions
   uifCeiling: number; // monthly remuneration ceiling for UIF
   notes?: string;
 };
@@ -34,6 +35,7 @@ export const taxYears: Record<number, TaxYear> = {
     thresholds: { under65: 99_000, from65: 153_250, from75: 171_300 },
     medicalCredit: { firstTwo: 376, additional: 254 },
     interestExemption: { under65: 23_800, from65: 34_500 },
+    retirementCap: 430_000,
     uifCeiling: 17_712,
     notes: 'The 2026 Budget adjusted brackets, rebates and thresholds for inflation by 3.4%, the first adjustment since the 2024 tax year.',
   },
@@ -53,6 +55,7 @@ export const taxYears: Record<number, TaxYear> = {
     thresholds: { under65: 95_750, from65: 148_217, from75: 165_689 },
     medicalCredit: { firstTwo: 364, additional: 246 },
     interestExemption: { under65: 23_800, from65: 34_500 },
+    retirementCap: 350_000,
     uifCeiling: 17_712,
     notes: 'Brackets, rebates and thresholds were not adjusted for inflation in the 2025 Budget, so they are identical to the 2025 tax year.',
   },
@@ -72,13 +75,14 @@ export const taxYears: Record<number, TaxYear> = {
     thresholds: { under65: 95_750, from65: 148_217, from75: 165_689 },
     medicalCredit: { firstTwo: 364, additional: 246 },
     interestExemption: { under65: 23_800, from65: 34_500 },
+    retirementCap: 350_000,
     uifCeiling: 17_712,
   },
 };
 
 export function calcTax(year: TaxYear, taxableIncome: number, age: number, medicalMembers: number, retirementContrib = 0) {
-  // Retirement contributions deductible up to 27.5% of taxable income, capped at R350,000.
-  const raCap = Math.min(taxableIncome * 0.275, 350_000);
+  // Retirement contributions deductible up to 27.5% of taxable income, limited to the year's annual cap.
+  const raCap = Math.min(taxableIncome * 0.275, year.retirementCap);
   const raDeduction = Math.min(retirementContrib, raCap);
   const income = Math.max(0, taxableIncome - raDeduction);
   let gross = 0;

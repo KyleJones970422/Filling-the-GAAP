@@ -4,7 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import CTA from '../../components/CTA.astro';
 ---
 <Base title="Public interest (PI) score calculator" description="Calculate your company's public interest score under the Companies Act and find out instantly whether you need an audit, an independent review, or can compile your own annual financial statements.">
-  <PageHero eyebrow="PI score calculator" title="Audit, independent review, or neither?" lede="Your public interest score, calculated under Regulation 26(2) of the Companies Act, decides what level of assurance your annual financial statements need. Answer eight quick questions." />
+  <PageHero eyebrow="PI score calculator" title="Audit, independent review, or neither?" lede="Your public interest score, calculated under Regulation 26(2) of the Companies Act, decides what level of assurance your annual financial statements need. Answer nine quick questions." />
   <section class="section-tight">
     <div class="wrap calc-grid">
       <form class="card" id="pi-form" novalidate>
@@ -170,10 +170,15 @@ import CTA from '../../components/CTA.astro';
       body = `<p>Any company with a public interest score of 350 or more must have its annual financial statements audited (Regulation 28(2)(c)).</p><p>We can prepare audit-ready statements and co-ordinate with a registered auditor.</p>`;
       actions = bookAudit;
     } else if (score >= 100) {
-      if (independent) {
+      if (independent && owner) {
+        badge = ['badge-ok', 'No audit or review required'];
+        title = 'Score ' + score + ', owner-managed and independently compiled: no audit or review is required.';
+        body = `<p>Because every shareholder is also a director and your statements are independently compiled, section 30(2A) exempts your company from both audit and independent review, unless a lender, investor, another law or your MOI requires one. Many companies at this size choose a review anyway.</p>`;
+        actions = bookReview;
+      } else if (independent) {
         badge = ['badge-warn', 'Independent review'];
         title = 'Your score of ' + score + ' means an independent review is required.';
-        body = `<p>Because your statements are independently compiled, you need an independent review rather than an audit. With a score of 100 or more the reviewer must be a registered auditor or a member of a professional body accredited under the Auditing Profession Act, such as a SAIPA Professional Accountant (SA) (Regulation 29(4)(a)).</p><p>Our Independent Reviewer (SA) can perform this engagement for you.</p>${owner ? '<p><strong>Note:</strong> the owner-managed exemption in section 30(2A) still applies to you, so strictly no review is required unless a lender, investor or your MOI asks for one. Many companies at this size choose a review anyway.</p>' : ''}`;
+        body = `<p>Because your statements are independently compiled, you need an independent review rather than an audit. With a score of 100 or more the reviewer must be a registered auditor or a member of a professional body accredited under the Auditing Profession Act, such as a SAIPA Professional Accountant (SA) (Regulation 29(4)(a)).</p><p>Our Independent Reviewer (SA) can perform this engagement for you.</p>`;
         actions = bookReview;
       } else {
         badge = ['badge-danger', 'Audit, unless you change how AFS are compiled'];
@@ -185,7 +190,7 @@ import CTA from '../../components/CTA.astro';
       if (owner) {
         badge = ['badge-ok', 'No audit or review required'];
         title = 'Score ' + score + ', owner-managed: you can do your own financials.';
-        body = `<p>With a public interest score below 100 and every shareholder also a director, section 30(2A) exempts your company from both audit and independent review. You may compile your own annual financial statements, approve them at board level and file them with your CIPC annual return together with a Financial Accountability Supplement.</p><p><strong>You do not need an accountant to compile your financial statements.</strong> FTG Books is built for exactly this: it keeps your books, calculates this score from your own data and compiles IFRS for SMEs compliant statements when you qualify. Your tax returns (ITR14, provisional tax, VAT, PAYE) are still due as normal.</p>`;
+        body = `<p>With a public interest score below 100 and every shareholder also a director, section 30(2A) exempts your company from both audit and independent review. You may compile your own annual financial statements and approve them at board level. With your CIPC annual return, you file a Financial Accountability Supplement instead of the statements.</p><p><strong>You do not need an accountant to compile your financial statements.</strong> FTG Books is built for exactly this: it keeps your books, calculates this score from your own data and compiles IFRS for SMEs compliant statements when you qualify. Your tax returns (ITR14, provisional tax, VAT, PAYE) are still due as normal.</p>`;
         actions = books + ` <a class="btn btn-outline btn-sm" href="/contact">Ask a question</a>`;
       } else {
         badge = ['badge-warn', 'Independent review'];

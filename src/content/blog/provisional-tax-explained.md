@@ -2,6 +2,7 @@
 title: "Provisional tax explained: who pays, when, and how to avoid the penalties"
 description: "Provisional tax is not an extra tax. It is a payment schedule. Here is how the August and February payments work, how to estimate, and how to avoid the 20% underestimation penalty."
 date: 2026-07-15
+updated: 2026-11-04
 category: Personal tax
 tags: [IRP6, provisional tax, freelancers, sole traders]
 ---
@@ -16,10 +17,10 @@ Provisional tax is simply **paying your normal income tax during the year** inst
 
 You are a provisional taxpayer if you earn income that is not remuneration (salary with PAYE deducted) and either:
 
-- Your taxable income from interest, dividends, rental and other non-salary sources exceeds **R30,000** a year, or
+- Your taxable income is above the tax threshold and your taxable income from interest, foreign dividends and rental exceeds **R30,000** a year, or
 - You run a business, freelance, earn commission without PAYE, or are a director of a private company receiving income not taxed at source.
 
-All companies and trusts are provisional taxpayers automatically. Individuals earning only a salary with full PAYE are not, even if they earn a lot.
+Companies fall into the system automatically, apart from exempt bodies such as approved public benefit organisations. Trusts can be provisional or non-provisional, depending on their income. Individuals earning only a salary with full PAYE are not provisional taxpayers, even if they earn a lot.
 
 ## The payment calendar (February year end)
 
@@ -37,10 +38,10 @@ For the **first payment**, SARS lets you use the "basic amount", which is your l
 
 For the **second payment** the rules are stricter. Your estimate must be at least:
 
-- **80%** of your actual taxable income if that income ends up at R1 million or below, or
-- **90%** of actual if it ends up above R1 million.
+- **90%** of your actual taxable income or the basic amount, whichever is lower, if that income ends up at R1 million or below, or
+- **80%** of actual if it ends up above R1 million.
 
-If you fall short, SARS levies a **20% penalty** on the difference between the tax on your estimate and the tax on the required percentage. This is the penalty that stings, and it is avoidable with a realistic February estimate.
+If you fall short, SARS levies a **20% penalty** on the difference between the tax on your estimate and the tax on the required amount. This is the penalty that stings, and it is avoidable with a realistic February estimate.
 
 ## Interest and late payments
 

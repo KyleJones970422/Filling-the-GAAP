@@ -45,7 +45,7 @@ const def = taxYears[site.defaultTaxYear];
         <div class="field">
           <label for="ra">Annual retirement contributions (R)</label>
           <input type="number" id="ra" name="ra" min="0" step="1000" value="0" inputmode="numeric" />
-          <span class="hint">Pension, provident and retirement annuity contributions. Deductible up to 27.5% of income, capped at R350,000.</span>
+          <span class="hint">Pension, provident and retirement annuity contributions. Deductible up to 27.5% of income, capped at <span id="ra-cap">R{def.retirementCap.toLocaleString('en-ZA')}</span> for the selected tax year.</span>
         </div>
         <button type="submit" class="btn btn-primary">Calculate</button>
       </form>
@@ -121,7 +121,8 @@ const def = taxYears[site.defaultTaxYear];
     // This field is always annual: the Annual/Monthly toggle applies to income only.
     const ra = Number($('ra').value) || 0;
 
-    const raCap = Math.min(income * 0.275, 350000);
+    $('ra-cap').textContent = R(year.retirementCap);
+    const raCap = Math.min(income * 0.275, year.retirementCap);
     const raDed = Math.min(ra, raCap);
     const ti = Math.max(0, income - raDed);
     let gross = 0, marginal = 0;

@@ -100,7 +100,7 @@ export const clientTypes = [
   { title: 'Salaried individuals', text: 'Employees with one or more IRP5s, medical aid, retirement annuities, travel allowances or side income.' },
   { title: 'Freelancers and sole traders', text: 'Provisional taxpayers who need their income and expenses handled correctly and their payments planned.' },
   { title: 'Start-ups and small businesses', text: 'Owner-managed companies that want clean books, compliant filings and a partner who speaks plainly.' },
-  { title: 'Companies and trusts', text: 'Private companies, family and business trusts with annual financial statement, IT12T and compliance requirements.' },
+  { title: 'Companies and trusts', text: 'Private companies, family and business trusts with annual financial statement, ITR12T and compliance requirements.' },
   { title: 'NPOs and body corporates', text: 'Non-profit companies, PBOs and sectional title schemes needing independent reviews, AFS and tax exemption support.' },
 ];
 

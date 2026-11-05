@@ -2,6 +2,7 @@
 title: "Audit, independent review, or neither? What your company's PI score decides"
 description: "The Companies Act does not require every company to be audited. Your public interest score and whether you are owner-managed decide what you need. Here is the full decision tree."
 date: 2026-08-01
+updated: 2026-11-04
 category: Compliance
 tags: [Companies Act, PI score, independent review, audit, AFS]
 ---
@@ -46,7 +47,7 @@ Put the two together and the practical outcome for most small businesses is:
 
 - **PI score below 100 and owner-managed:** no audit, no review. You can compile your own annual financial statements, and FTG Books is built to do exactly that.
 - **PI score below 100 but not owner-managed:** an independent review is required. It is a far lighter engagement than an audit.
-- **PI score 100 to 349:** have your statements independently compiled and reviewed; do not compile them internally or you will be forced into an audit.
+- **PI score 100 to 349:** have your statements independently compiled, because compiling them internally forces an audit. An independent review is then required, unless the company is owner-managed.
 - **PI score 350 or more:** audit, no way around it.
 
 ## What an independent review actually involves
@@ -57,6 +58,6 @@ As an Independent Reviewer (SA) I perform these engagements for companies.
 
 ## Do not forget the Financial Accountability Supplement
 
-Companies that are not required to be audited or reviewed still file a Financial Accountability Supplement (CoR 30.2) with their CIPC annual return. Those that are audited or reviewed file their AFS in iXBRL format. Getting this wrong attracts compliance notices.
+Companies that must be audited file their audited statements with their CIPC annual return, in iXBRL format. All other companies file a Financial Accountability Supplement (CoR 30.2) instead, unless they choose to file audited or independently reviewed statements. Getting this wrong attracts compliance notices.
 
 Unsure where you land? [Run the calculator](/tools/pi-score-calculator), then [book a call](/contact) if you want a second opinion.

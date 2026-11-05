@@ -74,9 +74,9 @@ export type OnceOff = { service: string; price: string; note?: string };
 /** The four services people search for most. Shown first on the pricing page. */
 export const mostRequested: OnceOff[] = [
   { service: 'Company registration (CIPC)', price: 'from R1,450', note: 'Name reservation, registration, share certificates and SARS income tax registration. CIPC fees included.' },
-  { service: 'Personal tax return (ITR12)', price: 'from R850', note: 'See the personal tax packages above for what each level includes.' },
+  { service: 'Personal tax return (ITR12)', price: 'from R850', note: 'See the personal tax packages below for what each level includes.' },
   { service: 'Annual financial statements (compilation)', price: 'from R4,500', note: 'Depends on size, complexity and the state of the underlying records.' },
-  { service: 'Independent review (ISRE 2400)', price: 'from R8,500', note: 'For companies with a public interest score below 350 that are not owner-managed or have a PI score of 100 or more.' },
+  { service: 'Independent review (ISRE 2400)', price: 'from R8,500', note: 'For companies that are not owner-managed, with a public interest score below 350 and statements that do not need an audit.' },
 ];
 
 export const onceOff: OnceOff[] = [
@@ -86,7 +86,7 @@ export const onceOff: OnceOff[] = [
   { service: 'Tax clearance (TCS PIN)', price: 'from R650', note: 'Assuming your profile is compliant. Remediation quoted separately.' },
   { service: 'SARS objection or appeal', price: 'from R1,950' },
   { service: 'Payroll only', price: 'from R120 per employee per month', note: 'Minimum R550 per month. Includes EMP201 and bi-annual EMP501.' },
-  { service: 'Trust annual financial statements and IT12T', price: 'from R5,500' },
+  { service: 'Trust annual financial statements and ITR12T', price: 'from R5,500' },
   { service: 'B-BBEE affidavit', price: 'from R450', note: 'Free for retainer clients.' },
   { service: 'Accounting software setup and training', price: 'from R2,500' },
 ];
