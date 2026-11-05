@@ -45,7 +45,6 @@ export const businessGroups: ServiceGroup[] = [
       { title: 'Monthly bookkeeping', blurb: 'Reconciled books every month in FTG Books, Xero, Sage or QuickBooks, so you always know where you stand.' },
       { title: 'Management accounts', blurb: 'Monthly or quarterly reports that explain what happened and what to do about it, not just a printout from the system.' },
       { title: 'Budgeting and cash flow forecasting', blurb: 'Rolling 12-month forecasts, scenario planning and funding readiness for banks and investors.' },
-      { title: 'Accounting software setup and training', blurb: 'Implementation, migration and training on FTG Books, Xero, Sage and QuickBooks so your team captures data correctly from day one.' },
     ],
   },
   {
