@@ -12,6 +12,12 @@
   status = 301
   force = true
 
+# Some tools look for /sitemap.xml; the real sitemap is the index Astro generates.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

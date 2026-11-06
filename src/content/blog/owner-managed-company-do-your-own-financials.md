@@ -1,6 +1,7 @@
 ---
 title: "Owner-managed with a PI score under 100? You may not need an accountant to compile your financials"
-description: "Thousands of small companies pay for compiled financial statements they are allowed to prepare themselves. Here is when that is true, what you still need, and how FTG Books fills the gap."
+seoTitle: "Owner-managed? Compile your own AFS"
+description: "Many small companies pay for financial statements they may prepare themselves. Here is when that is true, what you still need, and how FTG Books helps."
 date: 2026-08-15
 updated: 2026-11-05
 category: Software

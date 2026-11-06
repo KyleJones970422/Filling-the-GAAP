@@ -5,7 +5,7 @@ import CTA from '../../components/CTA.astro';
 import { monthly, annual } from '../../data/calendar';
 const cat = (c: string) => ({ SARS: 'badge-warn', CIPC: 'badge-ok', Payroll: 'pill-outline', VAT: 'badge-danger' }[c] ?? '');
 ---
-<Base title="South African tax calendar" description="Every recurring SARS, CIPC, VAT and payroll deadline for South African individuals and businesses: EMP201, VAT201, provisional tax, filing season, ITR14, CIPC annual returns and more.">
+<Base title="South African tax calendar" description="Every SARS, CIPC, VAT and payroll deadline for South African individuals and businesses: EMP201, VAT201, provisional tax, ITR14 and CIPC returns.">
   <PageHero eyebrow="Tax calendar" title="Every deadline, in one place." lede="The recurring rules that govern when things are due, with the confirmed dates for the 2026 filing season. SARS announces each season's exact dates in June; this page is updated when they do." />
   <section class="section-tight">
     <div class="wrap">

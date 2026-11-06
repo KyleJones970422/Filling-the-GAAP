@@ -23,7 +23,7 @@ const ld = {
   mainEntityOfPage: `${site.url}/resources/${post.id}`,
 };
 ---
-<Base title={post.data.title} description={post.data.description} type="article" jsonLd={ld}>
+<Base title={post.data.seoTitle ?? post.data.title} description={post.data.description} type="article" jsonLd={ld}>
   <article>
     <header class="section-tight post-head">
       <div class="wrap narrow">

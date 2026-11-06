@@ -7,7 +7,7 @@ export const site = {
   url: 'https://www.ftgaap.co.za',
   tagline: 'Accounting and tax that closes the gap between where your finances are and where they should be.',
   description:
-    'Filling the GAAP is a remote South African accounting and tax practice led by a Professional Accountant (SA), Professional Tax Practitioner (SA) and Independent Reviewer (SA). Personal tax, business accounting, payroll, VAT, CIPC and independent reviews, plus free accounting software for clients.',
+    'Remote South African accounting and tax practice: personal tax, business accounting, payroll, VAT, CIPC and independent reviews, plus free software for clients.',
   owner: 'John Knight',
   email: 'john@ftgaap.co.za',
   phoneDisplay: '081 285 7843',

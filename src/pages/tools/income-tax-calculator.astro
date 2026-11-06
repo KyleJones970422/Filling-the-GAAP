@@ -7,7 +7,7 @@ import { site } from '../../config';
 const years = Object.keys(taxYears).map(Number).sort((a, b) => b - a);
 const def = taxYears[site.defaultTaxYear];
 ---
-<Base title="South African income tax calculator" description={`Free SARS income tax calculator for the ${def.label}. Estimate your annual and monthly tax, effective and marginal rate, with rebates, medical credits and retirement annuity deductions.`}>
+<Base title="South African income tax calculator" description={`Free SARS income tax calculator for the ${def.label}. Estimate annual and monthly tax with rebates, medical credits and retirement deductions.`}>
   <PageHero eyebrow="Income tax calculator" title="How much tax will you pay?" lede="Enter your annual taxable income and a few details. The calculator applies the SARS tables, age rebates, medical scheme fees tax credits and the retirement contribution deduction." />
   <section class="section-tight">
     <div class="wrap calc-grid">

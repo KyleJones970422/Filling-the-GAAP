@@ -10,7 +10,7 @@ const schema = {
   mainEntity: [...generalFaq, ...individualFaq, ...businessFaq].map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
 };
 ---
-<Base title="Frequently asked questions" description="Answers to common questions about working with Filling the GAAP: fees, designations, remote service, FTG Books, tax returns, provisional tax, VAT, audits and independent reviews.">
+<Base title="Frequently asked questions" description="Answers about working with Filling the GAAP: fees, remote service, FTG Books, tax returns, provisional tax, VAT, audits and independent reviews.">
   <PageHero eyebrow="FAQ" title="Questions people ask before they call." lede="If yours is not here, WhatsApp us. We answer quickly and honestly." />
   <section class="section-tight">
     <div class="wrap narrow stack" style="--gap:3rem">

@@ -1,6 +1,7 @@
 ---
 title: "Audit, independent review, or neither? What your company's PI score decides"
-description: "The Companies Act does not require every company to be audited. Your public interest score and whether you are owner-managed decide what you need. Here is the full decision tree."
+seoTitle: "Audit, independent review or neither?"
+description: "Not every company needs an audit. Your public interest score and whether you are owner-managed decide what you need. Here is the full decision tree."
 date: 2026-08-01
 updated: 2026-11-05
 category: Compliance

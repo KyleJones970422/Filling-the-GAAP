@@ -1,5 +1,6 @@
 ---
 title: "Do you need to submit a tax return? A plain-English guide for South Africans"
+seoTitle: "Do you need to submit a tax return?"
 description: "Who must file an ITR12, who is exempt, what an auto-assessment really means, and the three mistakes that cost people refunds every year."
 date: 2026-07-01
 category: Personal tax
