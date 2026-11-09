@@ -29,7 +29,7 @@ Doing your own AFS fails for two reasons: the underlying bookkeeping is a mess, 
 
 ## How FTG Books fills the gap
 
-I built FTG Books because the software most small businesses use either stops at a trial balance or charges extra for statements an owner-managed company should be able to produce themselves. FTG Books:
+We built FTG Books because the software most small businesses use either stops at a trial balance or charges extra for statements an owner-managed company should be able to produce themselves. FTG Books:
 
 - keeps your bookkeeping clean month by month with bank imports and reconciliations,
 - handles VAT and produces the figures for your VAT201,
