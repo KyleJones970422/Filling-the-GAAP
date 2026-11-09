@@ -38,7 +38,16 @@ export const site = {
       role: 'Director',
       credentials: ['Professional Accountant (SA)', 'Professional Tax Practitioner (SA)', 'Independent Reviewer (SA)'],
       photo: '',
-      bio: 'John started in audit, then spent several years as a financial manager in industry across a range of sectors. As Director of Filling the GAAP, John combines professional accounting and tax with software built in-house.',
+      bio: "John is a finance executive with more than 30 years' experience across Southern and Sub-Saharan Africa, most of it in hotels and hospitality. He has run finance on both sides of the table: as financial controller for operators, and as asset manager and owner's representative for investors. He has supported hotel openings in Nigeria, Sharjah, St Helena, Tanzania, Rwanda and Zambia, and specialises in USALI hotel reporting, multi-property consolidation, feasibility modelling and statutory compliance. John is based in Port Elizabeth and works with clients in English and Afrikaans.",
+      /** Past and current roles, most recent first. Shown as a list under the bio; leave empty to hide it. */
+      career: [
+        'Director, JK Hospitality Consulting',
+        'Group Financial Manager, Indalo Hotels & Leisure',
+        'Financial Controller and Asset Manager, Valor Hospitality Partners',
+        'Financial Controller, Finance and Support (Africa), Mantis Developments',
+        'General Manager, Lake Pleasant Living',
+        'Financial Controller, Radisson Blu Hotel, Port Elizabeth',
+      ],
     },
   ],
   /** Google Business Profile review link. When set, a "Review us on Google" link appears with the testimonials. */

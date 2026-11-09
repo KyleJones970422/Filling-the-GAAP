@@ -5,14 +5,14 @@ import CTA from '../components/CTA.astro';
 import Promises from '../components/Promises.astro';
 import { site } from '../config';
 ---
-<Base title="About" description={`Meet ${site.owner}, Director of Filling the GAAP, a remote South African accounting and tax practice built on audit, industry experience and its own software.`}>
-  <PageHero eyebrow="About" title="Accountants who have sat on both sides of the desk." lede="A small, remote practice built on audit discipline, industry experience and software we write ourselves. Straight answers, fixed fees, and people who know your file." />
+<Base title="About" description={`Meet ${site.owner}, Director of Filling the GAAP, a remote South African accounting and tax practice built on 30 years of financial management.`}>
+  <PageHero eyebrow="About" title="Accountants who have sat on both sides of the desk." lede="A small, remote practice built on more than 30 years of running finance inside businesses, and on software we write ourselves. Straight answers, fixed fees, and people who know your file." />
 
   <section class="section-tight">
     <div class="wrap narrow prose">
       <h2>Why Filling the GAAP exists</h2>
       <p>The name is a play on GAAP, generally accepted accounting practice, and on the gap we kept seeing: between what small businesses and individuals are expected to comply with and the support they can actually afford. Most practices close that gap with more hours and bigger invoices. We close it with two things. Personal, professional service on a fixed fee, and software we build ourselves so that the parts of accounting that should be cheap or free actually are.</p>
-      <p>The practice started in audit and industry. Years of reviewing other people's financial statements teaches you that the numbers are only as good as the bookkeeping underneath, and that most problems come from things nobody explained to the business owner. Years as a financial manager teach the other half: what owners and directors actually need from their numbers to make decisions. Filling the GAAP brings those halves together.</p>
+      <p>The practice grew out of more than 30 years of running finance inside businesses. Controlling a hotel's books, consolidating a group of properties, or setting up the finance function for a new opening teaches you that the numbers are only as good as the bookkeeping underneath, and that most problems come from things nobody explained to the owner. Representing owners and investors teaches the other half: what owners and directors actually need from their numbers to make decisions. Filling the GAAP brings both halves to individuals and small businesses, on a fixed fee.</p>
       <h3>How the practice works</h3>
       <p>We are fully remote, which keeps overheads low and lets us serve clients anywhere in South Africa and South Africans abroad. Every client has a named person who knows their file and answers their questions, and every engagement includes <a href={site.practiceNexusUrl} target="_blank" rel="noopener">Practice Nexus</a>, our document management portal, with access granted once you have signed up as a client. We are available {site.hours}, and on WhatsApp for anything quick.</p>
       <h3>Designations held in the practice</h3>
@@ -41,6 +41,12 @@ import { site } from '../config';
               <p class="role">{m.role}</p>
               {m.credentials.length > 0 && <p class="creds">{m.credentials.map((c) => <span class="pill pill-outline">{c}</span>)}</p>}
               <p class="bio">{m.bio}</p>
+              {m.career?.length > 0 && (
+                <>
+                  <h4 class="career-title">Career</h4>
+                  <ul class="career">{m.career.map((c) => <li>{c}</li>)}</ul>
+                </>
+              )}
             </div>
           </article>
         ))}
@@ -63,5 +69,8 @@ import { site } from '../config';
   .creds { margin-bottom: 0.6rem; }
   .creds .pill { font-size: 0.72rem; }
   .bio { margin: 0; font-size: 0.97rem; }
+  .career-title { margin: 1.1rem 0 0.4rem; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-dark); }
+  .career { margin: 0; padding-left: 1.1rem; font-size: 0.93rem; }
+  .career li { margin-bottom: 0.25rem; }
   @media (max-width: 520px) { .member { grid-template-columns: 1fr; } .member-photo, .member-frame { width: 120px; } }
 </style>
